@@ -78,7 +78,7 @@ const App = () => {
         <Route path='/admin/*' element={<Onlyadmin><Admin /></Onlyadmin>} />
         <Route path='/*' element={<Navigate to="/" />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }
