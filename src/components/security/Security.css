@@ -1,0 +1,72 @@
+.security {
+    background-image: url(../../assets/About-Us-BG-1.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* min-height: 100vh; */
+    padding: 4rem;
+    /* background-color: #000; */
+    color: white;
+    /* display: flex; */
+    /* justify-content: space-between; */
+
+    /*  */
+    background-color: #06090d;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(5, 80px) 60px;
+    justify-content: center;
+    /* padding: 20px; */
+    gap: 30px;
+}
+
+.security a,
+.security .input-box {
+    text-align: center;
+    background-color: #05bbfe;
+    display: grid;
+    place-content: center;
+    border-radius: 15px;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    color: #000;
+}
+
+.security .input-box {
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+    padding: 10px;
+}
+
+.security .input-box label {
+    display: grid;
+    place-content: center;
+}
+
+.security .input-box input {
+    background-color: transparent;
+    border: 3px solid black;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+.security .edit,
+.security .confirm {
+    text-align: center;
+    background-color: transparent;
+    border: 2px solid #05bbfe;
+    width: 50%;
+    margin: 0 auto;
+    /* display: grid; */
+    border-radius: 25px;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    transition: .4s color, .4s background;
+}
+
+.security .edit:hover,
+.security .confirm:hover {
+    color: black;
+    background-color: #05bbfe;
+}
