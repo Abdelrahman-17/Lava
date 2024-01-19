@@ -1478,5 +1478,49 @@
             "price": "600",
             "title": "iPhon X"
         }
+    ],
+    "team_member": [
+        {
+            "id": "1",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        },
+        {
+            "id": "2",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        },
+        {
+            "id": "3",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        },
+        {
+            "id": "4",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        },
+        {
+            "id": "5",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        },
+        {
+            "id": "6",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        },
+        {
+            "id": "7",
+            "img": "../src/assets/Team-Image2.png",
+            "name": "Mohamed Wael",
+            "track": "Full Stack Devoloper"
+        }
     ]
 }

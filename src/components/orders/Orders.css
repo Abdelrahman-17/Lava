@@ -1,17 +1,18 @@
 .orders {
-    background-image: url(../../assets/About-Us-BG-1.png);
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* background-image: url(../../assets/About-Us-BG-1.png); */
+    /* background-position: top center; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
     /* min-height: 100vh; */
-    padding: 6rem 4rem;
+    /* padding: 6rem 4rem; */
+    padding: 25px;
     /* background-color: #000; */
     color: white;
     /* display: flex; */
     /* justify-content: space-between; */
 
     /*  */
-    background-color: #06090d;
+    /* background-color: #06090d; */
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;

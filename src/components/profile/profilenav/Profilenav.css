@@ -1,7 +1,7 @@
-.active,
-.navlinks:hover {
-    color: red;
-    border-bottom: 1px solid white;
+.nav .active,
+.nav .links:hover {
+    color: #477cff;
+    /* border-bottom: 1px solid white; */
     text-decoration: none;
 }
 
@@ -10,23 +10,29 @@
     border-right: 2px solid #1f93ff;
 }
 
-.user {
+.nav .user {
     background-color: #1f93ff;
     color: white;
     text-align: center;
     padding: 2rem;
+
 }
 
-.user h4 {
+.nav .user h4 {
     margin: 0;
     font-size: 1.5rem;
 }
 
-.navlinks {
-    text-decoration: none;
+.nav .user img {
+    border-radius: 50%;
 }
 
-.list {
+.nav .links {
+    text-decoration: none;
+    transition: .3s color;
+}
+
+.nav .list {
     width: auto;
     font-size: 1.2em;
     list-style: none;
@@ -34,19 +40,21 @@
     margin: 0;
 }
 
-.list li {
+.nav .list li {
     width: 95%;
-    padding: 5px 10px;
+    padding: 10px;
+    text-align: center;
+    text-transform: capitalize;
     border-bottom: 2px solid #1f93ff;
     font-size: 25px;
 }
 
 @media screen and (max-width: 1400px) {
-    .user {
+    .nav .user {
         padding: 20px;
     }
 
-    .user h4 {
+    .nav .user h4 {
         font-size: 1rem;
     }
 }
@@ -58,16 +66,16 @@
         margin: auto;
     }
 
-    .list {
+    .nav .list {
         display: flex;
         align-content: center;
     }
 
-    .list li {
+    .nav .list li {
         border: none;
     }
 
-    .user {
+    .nav .user {
         display: none;
     }
 }

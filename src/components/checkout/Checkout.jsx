@@ -18,6 +18,13 @@ const Checkout = () => {
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
+    const [cardholder, setCardholder] = useState('')
+    const [cardnumber, setCardnumber] = useState('')
+    const [cardcode, setCardcode] = useState('')
+    const [cardmonthexpr, setCardmonthexpr] = useState('')
+    const [cardyearexpr, setCardyearexpr] = useState('')
+    const [cardinner, setCardinner] = useState(false)
+
     const payment = (e) => {
         e.preventDefault();
         fetch("https://lava-11a9b-default-rtdb.firebaseio.com/orders.json", {
@@ -38,6 +45,11 @@ const Checkout = () => {
         // navigate('/orders')
 
     }
+    useEffect(() => {
+        if (cart.length === 0) {
+            navigate('/')
+        }
+    }, [cart.length])
     return (
         <>
             <ToastContainer />
@@ -45,7 +57,7 @@ const Checkout = () => {
                 <div className="payment">
                     <div className="visa">
                         <div className="visa-card">
-                            <div className="card-inner">
+                            <div className={`${cardinner ? 'card-inner active' : 'card-inner'}`}>
                                 <div className="front">
                                     <img src="https://i.ibb.co/PYss3yv/map.png" className="map-img" />
                                     <div className="row">
@@ -53,14 +65,18 @@ const Checkout = () => {
                                         <img src="https://i.ibb.co/WHZ3nRJ/visa.png" width="60px" />
                                     </div>
                                     <div className="row card-no">
-                                        <p className="num ">#### #### #### ####</p>
+                                        <p className="num ">
+                                            {cardnumber ? `${cardnumber}` : `#### #### #### ####`}
+                                        </p>
                                     </div>
                                     <div className="row card-holder">
                                         <p>CARD HPLDER</p>
                                         <p>VALID TILL</p>
                                     </div>
                                     <div className="row name">
-                                        <p className="name-card">FULL NAME</p>
+                                        <p className="name-card">
+                                            {cardholder ? `${cardholder}` : `FULL NAME`}
+                                        </p>
                                         <p>
                                             <span className="expires-card-month">MM</span>
                                             <span> /</span>
@@ -75,7 +91,7 @@ const Checkout = () => {
                                         <div>
                                             <img src="https://i.ibb.co/S6JG8px/pattern.png" />
                                         </div>
-                                        <p className="code-card"></p>
+                                        <p className="code-card">{cardcode}</p>
                                     </div>
 
                                 </div>
@@ -85,11 +101,11 @@ const Checkout = () => {
                     <form action='/Orders' onSubmit={payment} className="wrapper" >
                         <div className="input-box">
                             <label htmlFor="card-holder">Card Holder</label><br />
-                            <input type="text" name="card-holder" id="card-holder" placeholder="Mohamed Wael" />
+                            <input type="text" name="card-holder" id="card-holder" value={cardholder} placeholder="Mohamed Wael" onChange={(e) => setCardholder(e.target.value)} />
                         </div>
                         <div className="input-box ">
                             <label htmlFor="card-no">Card Number</label><br />
-                            <input type="text" name="card-no" id="card-no" placeholder="3051 2251 4842 7982" />
+                            <input type="text" name="card-no" id="card-no" maxLength={16} value={cardnumber} placeholder="3051 2251 4842 7982" onChange={(e) => setCardnumber(e.target.value)} />
                         </div>
                         <div className="d-flex">
                             <div className="input-box me-4">
@@ -151,7 +167,7 @@ const Checkout = () => {
                             </div>
                             <div className="input-box">
                                 <label>CVV</label> <br />
-                                <input type="text" name="card-code" id="card-code" placeholder="030" />
+                                <input type="text" name="card-code" id="card-code" maxLength={3} onMouseEnter={() => setCardinner(true)} onMouseLeave={() => setCardinner(false)} value={cardcode} placeholder="030" onChange={(e) => setCardcode(e.target.value)} />
                             </div>
                         </div>
                         <button className='payment' type='submit'>payment</button>
@@ -161,9 +177,10 @@ const Checkout = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th>title</th>
-                                <th>number</th>
-                                <th>price</th>
+                                <th>Product </th>
+                                <th>Quantity </th>
+                                <th>Unit Price</th>
+                                <th>Set Price</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -172,9 +189,11 @@ const Checkout = () => {
                                     {cart.map((ele, index) => {
                                         return (
                                             <tr key={index}>
-                                                <th>{ele.title}</th>
-                                                <th>{ele.itemquantity}</th>
-                                                <th>{ele.price} EGB</th>
+                                                <td>{ele.title}</td>
+                                                <td>{ele.itemquantity}</td>
+                                                <td>{ele.price} EGB</td>
+                                                <td>{ele.itemquantity * ele.price} EGB </td>
+
                                             </tr>
                                         )
                                     })}

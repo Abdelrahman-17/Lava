@@ -59,7 +59,7 @@ const Addproduct = () => {
     }
     const addproduct = async (e) => {
         e.preventDefault();
-        if (image) {
+        if (image && curentproduct.brand && curentproduct.category && curentproduct.description && curentproduct.itemquantity && curentproduct.price && curentproduct.brand) {
             try {
                 let imageUrl = null;
                 if (image) {
@@ -95,6 +95,9 @@ const Addproduct = () => {
                 toast.error(error.message);
                 setUploading(false)
             }
+        }
+        else {
+            toast.info('Please fill out all the fields!')
         }
     };
     const editeproduct = async (e) => {
@@ -148,8 +151,8 @@ const Addproduct = () => {
                     <br />
                     <label htmlFor="file" style={{ margin: '0 auto' }}>
                         Image Link:
-                        <MdPhotoCameraBack color='black'
-                            className="inline-block  ms-4 text-3xl"
+                        <MdPhotoCameraBack color='white'
+                            className="inline-block  translate-x-40 text-4xl"
                         // style={{ fontSize: '28px', display: 'inline-block' }}
                         />
                     </label>
@@ -173,13 +176,13 @@ const Addproduct = () => {
                         </div>
                     )}
                     <br />
-                    <label>Product Price</label>
+                    <label>Product Price : </label>
                     <input name="price" placeholder="Product price" type="number" value={curentproduct?.price} onChange={(e) => inputChange(e)} />
                     <br />
-                    <label>Product itemquantity</label>
+                    {/* <label>Product itemquantity : </label>
                     <input name="itemquantity" placeholder="Product itemquantity" type="number" value={curentproduct?.itemquantity} onChange={(e) => inputChange(e)} />
-                    <br />
-                    <label>Product Category:</label>
+                    <br /> */}
+                    <label>Product Category : </label>
                     <select name="category" value={curentproduct?.category} onChange={(e) => inputChange(e)}>
                         {category.map((cat, index) => {
                             return (
@@ -187,11 +190,11 @@ const Addproduct = () => {
                             )
                         })}
                     </select>
-                    <label>Product Brand:</label>
+                    <label>Product Brand : </label>
                     <input name="brand" placeholder="Product brand" type="text" value={curentproduct?.brand} onChange={(e) => inputChange(e)} />
                     <br />
-                    <label>Product Description:</label>
-                    <textarea name="description" placeholder="Description" cols="30" rows="10" value={curentproduct?.description} onChange={(e) => inputChange(e)}></textarea>
+                    <label>Product Description : </label>
+                    <textarea name="description" placeholder="Description" cols={10} rows={5} value={curentproduct?.description} onChange={(e) => inputChange(e)}></textarea>
                     <button type="submit">{formkind(id, "Add Product", "Edite Product")}</button>
                 </form>
             </div>

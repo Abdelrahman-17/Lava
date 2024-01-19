@@ -80,7 +80,7 @@ const Allproducts = () => {
                         return (
                             <tr key={index}>
                                 <td>{index}</td>
-                                <td>
+                                <td className="p-4">
                                     <img className={styles.imgg} src={pro.ImageUrl} />
                                 </td>
                                 <td>{pro.title}</td>

@@ -42,13 +42,13 @@ const App = () => {
     return children;
   };
   // console.log(currentUser);
-  useEffect(() => {
-    if (currentUser && currentUser?.emailVerified !== true) {
-      signOut(auth)
-      sendEmailVerification(auth.currentUser);
-      toast.info("you must Verified your email")
-    }
-  }, [currentUser])
+  // useEffect(() => {
+  //   if (currentUser && currentUser?.emailVerified !== true) {
+  //     signOut(auth)
+  //     sendEmailVerification(auth.currentUser);
+  //     toast.info("you must Verified your email")
+  //   }
+  // }, [currentUser])
   if (loading) {
     return (
       <div style={{ zIndex: '444444', background: '#222123' }} className=" h-screen w-screen fixed top-0 left-0 flex justify-center items-center text-center flex-col">
@@ -70,7 +70,7 @@ const App = () => {
         <Route path='/cart' element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
         <Route path='/booking' element={<ProtectedRoute><BookingPage /></ProtectedRoute>} />
         <Route path='/checkout' element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-        <Route path='/profile' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        <Route path='/profile/*' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
         <Route path='/chat' element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
         <Route path='/security' element={<ProtectedRoute><SecurityPage /></ProtectedRoute>} />
         <Route path='/About' element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />

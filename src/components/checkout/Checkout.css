@@ -136,7 +136,7 @@
 /* .visa-card:hover .cardd-inner {
     transform: rotateY(-180deg);
 } */
-.checkout .cardd-inner.active {
+.checkout .card-inner.active {
     transform: rotateY(-180deg);
 }
 
@@ -213,6 +213,7 @@
 .checkout td {
     border: 2px solid white;
     text-align: center;
+    padding: 10px;
 }
 
 .checkout table {

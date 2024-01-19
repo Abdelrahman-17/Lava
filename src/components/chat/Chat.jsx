@@ -42,33 +42,25 @@ const Chat = () => {
         getusers();
     }, [])
     // console.log('currentUser', currentUser);
-    console.log(users);
+    // console.log(users);
     let admin
     users.map(ele => admin = ele)
-    // const get_admin_data = localStorage.getItem('admin_data')
-    // const admin_data = JSON.parse(get_admin_data)
-    // useEffect(() => {
-    //     if (currentUser?.user !== 'admin@gamil.com') {
-    //         console.log("cleint");
-    //     }
-    // }, [])
     // useEffect(() => {
     //     if (currentUser?.uid && currentUser?.displayName && currentUser?.email && currentUser?.photoURL) {
     //         setLoading(false)
     //     }
     // }, [currentUser])
-    // useEffect(() => {
-    //     if (!currentUser) {
-    //         navigate('/')
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (!currentUser) {
+            navigate('/')
+        }
+    }, [currentUser])
     const handelUserClick = (user) => {
         setSelectedUser(user)
     }
     return (
         <div className='flex min-h-screen text-center bg-slate-100 max-w-[1435px] min-w-[850px] mx-auto'>
             {/* <div className="flex min-h-screen bg-slate-100 max-w-[1435px] min-w-[850px] mx-auto"> */}
-
             {currentUser?.email === "admin@gmail.com" ?
                 <>
                     <div className='bg-white lg:w-[400px] w-[300px] '>

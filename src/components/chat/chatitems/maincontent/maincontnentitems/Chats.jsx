@@ -29,12 +29,12 @@ const Chats = ({ selectedUser, currentUser }) => {
     //     }
 
     // }, [messages])
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
-    const scrollToBottom = () => {
-        chatRef.current?.scrollIntoView({ behavoir: "smooth" });
-    };
+    // useEffect(() => {
+    //     scrollToBottom();
+    // }, [messages]);
+    // const scrollToBottom = () => {
+    //     chatRef.current?.scrollIntoView({ behavoir: "smooth" });
+    // };
     const handelImageClick = (img) => {
         setShowimg(true)
         setSelectedImg(img)
