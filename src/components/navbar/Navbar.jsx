@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../context/AuthContext'
 import { cartitem, removefromcart, totalquantity } from '../../redux/slice/cartslice'
 import { Adminlink } from '../../context/Onlyadmin'
+import Loader from '../loader/Loader'
 const Navbar = () => {
     const activelink = ({ isActive }) => (isActive && `active`)
     const dispatch = useDispatch()
@@ -19,6 +20,7 @@ const Navbar = () => {
     const { currentUser } = useContext(AuthContext)
     const items = useSelector(cartitem);
     const totquantity = useSelector(totalquantity)
+    const [loading, setLoading] = useState(false)
     // const [activeside, setActiveside] = useState(true)
     const showsidenav = () => {
         setSidenav(!sidenav);
@@ -30,36 +32,40 @@ const Navbar = () => {
     //     }
     // }, [location.pathname])
     const logouthandler = () => {
-        signOut(auth).then(() => {
-            toast.success("logout succeessful...")
-        }).catch((error) => {
-            toast.error(error.message)
-        });
+        setLoading(true)
+        // signOut(auth).then(() => {
+        //     toast.success("logout succeessful...")
+        // }).catch((error) => {
+        //     toast.error(error.message)
+        // });
     }
 
     return (
         <>
             <ToastContainer />
             {currentUser &&
-                <header>
-                    <div className="logo">
-                        <img src={Logo} alt="" />
-                    </div>
-                    <button className="btn-h" onClick={showsidenav}>=</button>
-                    <div className={`${sidenav ? "nav-menu active" : "nav-menu"}`}>
-                        <nav>
-                            <Adminlink>
-                                <NavLink className={activelink} to='/admin/home' >Admin</NavLink>
-                            </Adminlink>
-                            <NavLink className={activelink} to="/">home</NavLink>
-                            <NavLink className={activelink} to="/booking">booking</NavLink>
-                            <NavLink className={activelink} to="/store">store</NavLink>
-                            {/* <NavLink className={activelink} to="/orders">orders</NavLink> */}
-                            <NavLink className={`${activelink} cart`} to="/cart" onMouseMove={() => setSidecart(true)}>Cart
-                                <i className="fa-solid fa-cart-shopping me-2"></i>
-                                <p>{totquantity}</p>
-                            </NavLink>
-                            {/* {items && items.length > 0 &&
+                <>
+                    {loading ? <Loader />
+                        :
+                        <header>
+                            <div className="logo">
+                                <img src={Logo} alt="" />
+                            </div>
+                            <button className="btn-h" onClick={showsidenav}>=</button>
+                            <div className={`${sidenav ? "nav-menu active" : "nav-menu"}`}>
+                                <nav>
+                                    <Adminlink>
+                                        <NavLink className={activelink} to='/admin/home' >Admin</NavLink>
+                                    </Adminlink>
+                                    <NavLink className={activelink} to="/">home</NavLink>
+                                    <NavLink className={activelink} to="/booking">booking</NavLink>
+                                    <NavLink className={activelink} to="/store">store</NavLink>
+                                    {/* <NavLink className={activelink} to="/orders">orders</NavLink> */}
+                                    <NavLink className={`${activelink} cart`} to="/cart" onMouseMove={() => setSidecart(true)}>Cart
+                                        <i className="fa-solid fa-cart-shopping me-2"></i>
+                                        <p>{totquantity}</p>
+                                    </NavLink>
+                                    {/* {items && items.length > 0 &&
                             < div className={`${sidecart ? "sidecart active" : "sidecart"}`}>
                                 <button onClick={() => setSidecart(false)}>X</button>
                                 {
@@ -75,42 +81,44 @@ const Navbar = () => {
                                     })
                                 }
                             </div>} */}
-                            <div className="dropdown">
-                                <button className={`${activelink} dropdown-btn`}  >pages
-                                    <ion-icon name="chevron-down-outline"></ion-icon>
-                                </button>
-                                <div className="dropdown-menu">
-                                    <NavLink className={activelink} to="/About">about</NavLink>
-                                    <NavLink className={activelink} to="/Services">services</NavLink>
-                                    <NavLink className={activelink} to="/News">news</NavLink>
-                                    <NavLink className={activelink} to="/Team">team</NavLink>
-                                    <NavLink className={activelink} to="/Faq">FAQ</NavLink>
-                                    <NavLink className={activelink} to="/404">404</NavLink>
-                                    <NavLink className={activelink} to="/Contact">contact</NavLink>
+                                    <div className="dropdown">
+                                        <button className={`${activelink} dropdown-btn`}  >pages
+                                            <ion-icon name="chevron-down-outline"></ion-icon>
+                                        </button>
+                                        <div className="dropdown-menu">
+                                            <NavLink className={activelink} to="/About">about</NavLink>
+                                            <NavLink className={activelink} to="/Services">services</NavLink>
+                                            <NavLink className={activelink} to="/News">news</NavLink>
+                                            <NavLink className={activelink} to="/Team">team</NavLink>
+                                            <NavLink className={activelink} to="/Faq">FAQ</NavLink>
+                                            <NavLink className={activelink} to="/404">404</NavLink>
+                                            <NavLink className={activelink} to="/Contact">contact</NavLink>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <div className="account">
+                                    {
+                                        currentUser ?
+                                            <>
+                                                <Link to="/profile">
+                                                    <span>{currentUser?.displayName}</span>
+                                                    <img src={currentUser?.photoURL} className='ml-2 w-8 h-8 rounded-full' alt="" />
+                                                </Link>
+                                                <button onClick={logouthandler}>Logout</button>
+
+                                            </>
+                                            :
+                                            <>
+                                                <Link to="/login">Login</Link>
+                                                <Link to="/signup">Signup</Link>
+                                            </>
+                                    }
+
                                 </div>
-                            </div>
-                        </nav>
-                        <div className="account">
-                            {
-                                currentUser ?
-                                    <>
-                                        <Link to="/profile">
-                                            <span>{currentUser?.displayName}</span>
-                                            <img src={currentUser?.photoURL} className='ml-2 w-8 h-8 rounded-full' alt="" />
-                                        </Link>
-                                        <button onClick={logouthandler}>Logout</button>
-
-                                    </>
-                                    :
-                                    <>
-                                        <Link to="/login">Login</Link>
-                                        <Link to="/signup">Signup</Link>
-                                    </>
-                            }
-
-                        </div>
-                    </div >
-                </header >
+                            </div >
+                        </header >
+                    }
+                </>
             }
         </>
     )

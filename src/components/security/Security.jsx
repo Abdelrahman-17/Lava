@@ -11,6 +11,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { sendPasswordResetEmail, updateProfile } from 'firebase/auth'
 import { collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable, uploadString } from 'firebase/storage'
+import Loader from '../loader/Loader'
 const Security = () => {
     const [fullname, setFullname] = useState("")
     const [username, setUsername] = useState("")
@@ -154,64 +155,66 @@ const Security = () => {
     }
     return (
         <>
-            <div className='security'>
-                <div className='data-profile' key={currentuser?.uid}>
-                    <GoPencil className='icon' size={30} onClick={() => setActiveedit(!activeedit)} color='#1f93ff' />
-                    <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                        <label htmlFor='fullname'>Full Name </label>
-                        <p> : </p>
-                        <input type="text" id='fullname' disabled={activeedit ? false : true} value={fullname} onChange={(e) => setFullname(e.target.value)} />
-                    </div>
-                    <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                        <label htmlFor='username'>Username </label>
-                        <p> : </p>
-                        <input type="text" id='username' disabled={activeedit ? false : true} value={username} onChange={(e) => setUsername(e.target.value)} />
-                    </div>
-                    <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                        <label htmlFor='email'>Email </label>
-                        <p> : </p>
-                        <input type="email" id='email' disabled={activeedit ? false : true} value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                        <label htmlFor='address'>Address </label>
-                        <p> : </p>
-                        <input type="text" id='address' disabled={activeedit ? false : true} value={address} onChange={(e) => setAddress(e.target.value)} />
-                    </div>
-                    <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                        <label htmlFor='phonenumber'>Phone Number </label>
-                        <p> : </p>
-                        <input type="tel" id='phonenumber' disabled={activeedit ? false : true} value={phone} onChange={(e) => setPhone(e.target.value)} />
-                    </div>
-                    <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
-                        <label htmlFor='photoUrL'>PhotoUrl </label>
-                        <p> : </p>
-                        {photoUrl &&
-                            <img style={{ border: "3px solid white" }}
-                                className="w-16 h-16 rounded-full"
-                                src={photoUrl}
-                            />
-                        }
-                        <input
-                            type="file"
-                            id="photoUrL"
-                            // disabled={activeedit ? false : true}
-                            accept="image/*"
-                            style={{ display: "none" }}
-                            onChange={handleImageChange}
-                        />
-                        {
-                            loading && <p>loading</p>
-                        }
-                    </div>
-                    {
-                        activeedit &&
-                        <div className='edit'>
-                            <button className='save' onClick={save}>save</button>
-                            <button className='reset-pass' onClick={onresethandler}>reset pass</button>
+            {loading ? <Loader />
+                : <div className='security'>
+                    <div className='data-profile' key={currentuser?.uid}>
+                        <GoPencil className='icon' size={30} onClick={() => setActiveedit(!activeedit)} color='#1f93ff' />
+                        <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
+                            <label htmlFor='fullname'>Full Name </label>
+                            <p> : </p>
+                            <input type="text" id='fullname' disabled={activeedit ? false : true} value={fullname} onChange={(e) => setFullname(e.target.value)} />
                         </div>
-                    }
+                        <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
+                            <label htmlFor='username'>Username </label>
+                            <p> : </p>
+                            <input type="text" id='username' disabled={activeedit ? false : true} value={username} onChange={(e) => setUsername(e.target.value)} />
+                        </div>
+                        <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
+                            <label htmlFor='email'>Email </label>
+                            <p> : </p>
+                            <input type="email" id='email' disabled={activeedit ? false : true} value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </div>
+                        <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
+                            <label htmlFor='address'>Address </label>
+                            <p> : </p>
+                            <input type="text" id='address' disabled={activeedit ? false : true} value={address} onChange={(e) => setAddress(e.target.value)} />
+                        </div>
+                        <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
+                            <label htmlFor='phonenumber'>Phone Number </label>
+                            <p> : </p>
+                            <input type="tel" id='phonenumber' disabled={activeedit ? false : true} value={phone} onChange={(e) => setPhone(e.target.value)} />
+                        </div>
+                        <div className={`${activeedit ? 'active input-box' : 'input-box'}`}>
+                            <label htmlFor='photoUrL'>PhotoUrl </label>
+                            <p> : </p>
+                            {photoUrl &&
+                                <img style={{ border: "3px solid white" }}
+                                    className="w-16 h-16 rounded-full"
+                                    src={photoUrl}
+                                />
+                            }
+                            <input
+                                type="file"
+                                id="photoUrL"
+                                // disabled={activeedit ? false : true}
+                                accept="image/*"
+                                style={{ display: "none" }}
+                                onChange={handleImageChange}
+                            />
+                            {
+                                loading && <p>loading</p>
+                            }
+                        </div>
+                        {
+                            activeedit &&
+                            <div className='edit'>
+                                <button className='save' onClick={save}>save</button>
+                                <button className='reset-pass' onClick={onresethandler}>reset pass</button>
+                            </div>
+                        }
+                    </div>
                 </div>
-            </div>
+            }
         </>
     )
 }

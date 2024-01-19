@@ -9,6 +9,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { BsGoogle } from 'react-icons/bs';
 import Logo from '../../assets/logo.png'
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import Loader from '../loader/Loader';
 
 const Login = () => {
     const { currentUser } = useContext(AuthContext);
@@ -66,60 +67,63 @@ const Login = () => {
     return (
         <>
             <ToastContainer />
-            <div className='body'>
-                {/* <div className="-translate-y-10 mb-8">
+            {loading ? <Loader />
+                : <div className='body'>
+                    {/* <div className="-translate-y-10 mb-8">
                     <div className="flex gap-4 items-center">
                         <img src={Logo} className="w-20" />
                         <h1 className="font-black text-slate-700  dark:text-white text-4xl">LavaApp</h1>
                     </div>
                 </div> */}
-                <div className="wrapper">
-                    <span className="icon-close">
-                        <ion-icon id="close-outline" name="close-outline"></ion-icon> </span>
-                    <div className="form-box login">
-                        <h2>Login</h2>
-                        <form onSubmit={Handlelogin}>
-                            <div className="input-box">
-                                <span className="icon">
-                                    <ion-icon name="mail"></ion-icon>
-                                </span>
-                                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                                <label>Email</label>
+                    <div className="wrapper">
+                        <span className="icon-close">
+                            <ion-icon id="close-outline" name="close-outline"></ion-icon> </span>
+                        <div className="form-box login">
+                            <h2>Login</h2>
+                            <form onSubmit={Handlelogin}>
+                                <div className="input-box">
+                                    <span className="icon">
+                                        <ion-icon name="mail"></ion-icon>
+                                    </span>
+                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                                    <label>Email</label>
+                                </div>
+                                <div className="input-box">
+                                    <span className="icon">
+                                        <ion-icon name="lock-closed"></ion-icon>
+                                    </span>
+                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                    <label>Password</label>
+                                </div>
+                                <button type="submit" className="btn" id="login_btn">
+                                    Login
+                                    {/* {`${loading ? `Login ....` : `Login`}`} */}
+                                </button>
+                                <div className="login-register">
+                                    <p>Don't have an acoount ?
+                                        <Link to="/Signup" className="register-link"> Register</Link>
+                                    </p>
+                                </div>
+                            </form>
+                            <div className="flex items-center gap-3 my-5">
+                                <hr className="w-full border-slate-300" />
+                                <p className='text-white'>OR</p>
+                                <hr className="w-full border-slate-300" />
                             </div>
-                            <div className="input-box">
-                                <span className="icon">
-                                    <ion-icon name="lock-closed"></ion-icon>
-                                </span>
-                                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                                <label>Password</label>
-                            </div>
-                            <button type="submit" className="btn" id="login_btn">
-                                {`${loading ? `Login ....` : `Login`}`}
+                            <button
+                                className="flex bg-[#477cff] text-white w-full justify-between py-2 px-4 rounded shadow font-semibold"
+                                onClick={handleGoogleSignup}
+                            >
+
+                                <BsGoogle size={20} />
+                                <span>Continue with Google</span>
+                                <span></span>
                             </button>
-                            <div className="login-register">
-                                <p>Don't have an acoount ?
-                                    <Link to="/Signup" className="register-link"> Register</Link>
-                                </p>
-                            </div>
-                        </form>
-                        <div className="flex items-center gap-3 my-5">
-                            <hr className="w-full border-slate-300" />
-                            <p className='text-white'>OR</p>
-                            <hr className="w-full border-slate-300" />
                         </div>
-                        <button
-                            className="flex bg-[#477cff] text-white w-full justify-between py-2 px-4 rounded shadow font-semibold"
-                            onClick={handleGoogleSignup}
-                        >
 
-                            <BsGoogle size={20} />
-                            <span>Continue with Google</span>
-                            <span></span>
-                        </button>
                     </div>
-
                 </div>
-            </div>
+            }
         </>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import HomePage from './pages/homepage/HomePage'
 import Footer from './components/footer/Footer'
@@ -27,9 +27,11 @@ import { getorders } from './redux/slice/orderslice'
 import { sendEmailVerification, signOut, updateProfile } from 'firebase/auth'
 import { auth } from './firebase/config'
 import { toast } from 'react-toastify'
+import Loader from './components/loader/Loader'
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getorders())
@@ -49,36 +51,37 @@ const App = () => {
   //     toast.info("you must Verified your email")
   //   }
   // }, [currentUser])
-  if (loading) {
-    return (
-      <div style={{ zIndex: '444444', background: '#222123' }} className=" h-screen w-screen fixed top-0 left-0 flex justify-center items-center text-center flex-col">
-        <video autoPlay loop muted className='h-full w-full'>
-          <source src={loader} type="video/mp4" />
-        </video>
-      </div>
-    )
-  }
+  // if (loading) {
+  //   return (
+  //     <Loader />
+  //   )
+  // }
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignupPage />} />
-        <Route path='/store' element={<ProtectedRoute><StorePage /></ProtectedRoute>} />
-        <Route path='/orders' element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
-        <Route path='/cart' element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
-        <Route path='/booking' element={<ProtectedRoute><BookingPage /></ProtectedRoute>} />
-        <Route path='/checkout' element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-        <Route path='/profile/*' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
-        <Route path='/chat' element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
-        <Route path='/security' element={<ProtectedRoute><SecurityPage /></ProtectedRoute>} />
-        <Route path='/About' element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />
-        <Route path='/Team' element={<ProtectedRoute><TeamPage /></ProtectedRoute>} />
-        <Route path='/admin/*' element={<Onlyadmin><Admin /></Onlyadmin>} />
-        <Route path='/*' element={<Navigate to="/" />} />
-      </Routes>
-      <Footer />
+      {loading ? <Loader />
+        : <>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/signup' element={<SignupPage />} />
+            {/* <Route path='/loader' element={<Loader />} /> */}
+            <Route path='/store' element={<ProtectedRoute><StorePage /></ProtectedRoute>} />
+            <Route path='/orders' element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
+            <Route path='/cart' element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+            <Route path='/booking' element={<ProtectedRoute><BookingPage /></ProtectedRoute>} />
+            <Route path='/checkout' element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+            <Route path='/profile/*' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+            <Route path='/chat' element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
+            <Route path='/security' element={<ProtectedRoute><SecurityPage /></ProtectedRoute>} />
+            <Route path='/About' element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />
+            <Route path='/Team' element={<ProtectedRoute><TeamPage /></ProtectedRoute>} />
+            <Route path='/admin/*' element={<Onlyadmin><Admin /></Onlyadmin>} />
+            <Route path='/*' element={<Navigate to="/" />} />
+          </Routes>
+          <Footer />
+        </>
+      }
     </>
   )
 }
