@@ -33,11 +33,13 @@ const Navbar = () => {
     // }, [location.pathname])
     const logouthandler = () => {
         setLoading(true)
-        // signOut(auth).then(() => {
-        //     toast.success("logout succeessful...")
-        // }).catch((error) => {
-        //     toast.error(error.message)
-        // });
+        signOut(auth).then(() => {
+            toast.success("logout succeessful...")
+            setLoading(false)
+        }).catch((error) => {
+            toast.error(error.message)
+            setLoading(false)
+        });
     }
 
     return (
