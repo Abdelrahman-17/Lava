@@ -46,6 +46,9 @@ const Chats = ({ selectedUser, currentUser }) => {
             <div className="chats p-4 h-[calc(100vh-128px)] overflow-y-auto bg-slate-200 ">
                 {messages &&
                     messages.map((message) => {
+                        if (message.senderId === currentUser?.uid) {
+                            console.log(message.senderId);
+                        }
                         return (
                             <div
                                 className={`relative flex ${message.senderId == currentUser.uid
@@ -57,7 +60,7 @@ const Chats = ({ selectedUser, currentUser }) => {
                             >
                                 {message.imageUrl ? (
                                     <div
-                                        className={`shadow mb-1 p-1 px-3 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId == currentUser.id
+                                        className={`shadow mb-1 p-1 px-3 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId == currentUser.uid
                                             ? "bg-emerald-500 text-white rounded-tr-none"
                                             : "bg-white text-black rounded-tl-none"
                                             }`}
@@ -103,7 +106,7 @@ const Chats = ({ selectedUser, currentUser }) => {
                                     </div>
                                 ) : (
                                     <div
-                                        className={`flex items-end shadow mb-1 py-1 px-2 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId == currentUser.id
+                                        className={`flex items-end shadow mb-1 py-1 px-2 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId == currentUser.uid
                                             ? "bg-emerald-500 text-white rounded-tr-none"
                                             : "bg-white text-black rounded-tl-none"
                                             }`}
@@ -111,7 +114,7 @@ const Chats = ({ selectedUser, currentUser }) => {
                                         <p className="py-1 px-2">{message.message}</p>
                                         {message.timestamp && (
                                             <p
-                                                className={`text-[11px] ${message.senderId == currentUser.id
+                                                className={`text-[11px] ${message.senderId == currentUser.uid
                                                     ? "text-slate-200"
                                                     : "text-black"
                                                     }`}

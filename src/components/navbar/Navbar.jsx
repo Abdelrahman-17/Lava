@@ -8,9 +8,10 @@ import { auth } from '../../firebase/config'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../context/AuthContext'
-import { cartitem, removefromcart, totalquantity } from '../../redux/slice/cartslice'
+import { addtocart, cartitem, decrease, removefromcart, totalquantity } from '../../redux/slice/cartslice'
 import { Adminlink } from '../../context/Onlyadmin'
 import Loader from '../loader/Loader'
+import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
     const activelink = ({ isActive }) => (isActive && `active`)
     const dispatch = useDispatch()
@@ -63,26 +64,37 @@ const Navbar = () => {
                                     <NavLink className={activelink} to="/booking">booking</NavLink>
                                     <NavLink className={activelink} to="/store">store</NavLink>
                                     {/* <NavLink className={activelink} to="/orders">orders</NavLink> */}
-                                    <NavLink className={`${activelink} cart`} to="/cart" onMouseMove={() => setSidecart(true)}>Cart
-                                        <i className="fa-solid fa-cart-shopping me-2"></i>
+                                    {/* <NavLink className={`${activelink} cart`} to="/cart" onMouseMove={() => setSidecart(true)}>Cart
+                                        <FaShoppingCart className="mx-2 inline-block" size={25} />
                                         <p>{totquantity}</p>
-                                    </NavLink>
-                                    {/* {items && items.length > 0 &&
-                            < div className={`${sidecart ? "sidecart active" : "sidecart"}`}>
-                                <button onClick={() => setSidecart(false)}>X</button>
-                                {
-                                    items.map((ele, index) => {
-                                        return (
-                                            <div key={index}>
-                                                <p>{ele.title}</p>
-                                                <p>{ele.price} EGB</p>
-                                                <img src={ele.ImageUrl} />
-                                                <button onClick={() => dispatch(removefromcart(ele))}>X</button >
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>} */}
+                                    </NavLink> */}
+                                    <NavLink className={activelink} to='/cart'>cart</NavLink>
+                                    <div className='cart'>
+                                        <FaShoppingCart onClick={() => setSidecart(!sidecart)} className="cursor-pointer" size={25} />
+                                        <p>{totquantity}</p>
+                                    </div>
+                                    {
+                                        items && items.length > 0 &&
+                                        < div className={`${sidecart ? "sidecart active" : "sidecart"}`}>
+                                            {/* <button onClick={() => setSidecart(false)}>X</button> */}
+                                            {
+                                                items.map((ele, index) => {
+                                                    return (
+                                                        <div key={index}>
+                                                            <p>{ele.title}</p>
+                                                            <p >{ele.itemquantity}</p>
+                                                            <button onClick={() => dispatch(addtocart(ele))}>+</button>
+                                                            <button onClick={() => dispatch(decrease(ele))}>-</button>
+                                                            {/* <p>{ele.price} EGB</p> */}
+                                                            {/* <img src={ele.ImageUrl} /> */}
+                                                            {/* <button onClick={() => dispatch(removefromcart(ele))}>X</button > */}
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                            <Link to='/cart' onClick={() => setSidecart(false)}>View All Cart</Link>
+                                        </div>
+                                    }
                                     <div className="dropdown">
                                         <button className={`${activelink} dropdown-btn`}  >pages
                                             <ion-icon name="chevron-down-outline"></ion-icon>

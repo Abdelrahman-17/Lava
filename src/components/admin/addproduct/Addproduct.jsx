@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Addproduct.module.css"
 // import Card from "../../ui/Card"
 import { Navigate, useNavigate, useParams } from "react-router-dom";
@@ -35,6 +35,11 @@ const Addproduct = () => {
         const newstate = formkind(id, { ...initialproduct }, productEdite)
         return newstate
     })
+    useEffect(() => {
+        if (curentproduct) {
+            setImagePreview(curentproduct?.ImageUrl);
+        }
+    }, [curentproduct])
     const category = [
         "All",
         ...new Set(product.map((products) => products.category)),
@@ -102,7 +107,7 @@ const Addproduct = () => {
     };
     const editeproduct = async (e) => {
         e.preventDefault();
-        if (image) {
+        if (image && curentproduct?.brand && curentproduct?.category && curentproduct?.description && curentproduct?.itemquantity && curentproduct?.price && curentproduct?.brand) {
             try {
                 let imageUrl = null;
                 if (image) {
@@ -177,7 +182,7 @@ const Addproduct = () => {
                     )}
                     <br />
                     <label>Product Price : </label>
-                    <input name="price" placeholder="Product price" type="number" value={curentproduct?.price} onChange={(e) => inputChange(e)} />
+                    <input name="price" placeholder="Product price" type="text" value={curentproduct?.price} onChange={(e) => inputChange(e)} />
                     <br />
                     {/* <label>Product itemquantity : </label>
                     <input name="itemquantity" placeholder="Product itemquantity" type="number" value={curentproduct?.itemquantity} onChange={(e) => inputChange(e)} />

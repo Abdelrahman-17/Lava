@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/navbar/Navbar'
 import HomePage from './pages/homepage/HomePage'
 import Footer from './components/footer/Footer'
@@ -14,7 +14,7 @@ import TeamPage from './pages/teampage/TeamPage'
 import ProfilePage from './pages/Profilepage/ProfilePage'
 import ChatPage from './pages/chatpage/ChatPage'
 import SecurityPage from './pages/securitypage/SecurityPage'
-import BookingPage from './pages/bookingpage/Bookingpage'
+import BookingPage from './pages/bookingpage/BookingPage'
 // import Loader from './components/loader/Loader'
 import Admin from './components/admin/Admin';
 import { AuthContext } from './context/AuthContext'
@@ -31,7 +31,6 @@ import Loader from './components/loader/Loader'
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getorders())
@@ -51,11 +50,7 @@ const App = () => {
   //     toast.info("you must Verified your email")
   //   }
   // }, [currentUser])
-  // if (loading) {
-  //   return (
-  //     <Loader />
-  //   )
-  // }
+
   return (
     <>
       {loading ? <Loader />
@@ -65,7 +60,6 @@ const App = () => {
             <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/signup' element={<SignupPage />} />
-            {/* <Route path='/loader' element={<Loader />} /> */}
             <Route path='/store' element={<ProtectedRoute><StorePage /></ProtectedRoute>} />
             <Route path='/orders' element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
             <Route path='/cart' element={<ProtectedRoute><CartPage /></ProtectedRoute>} />

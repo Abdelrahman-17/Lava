@@ -1,10 +1,10 @@
 .testimonials {
-    min-height: 90vh;
+    min-height: 100vh;
     color: white;
-    /* position: relative; */
+    position: relative;
     z-index: 2;
     background-color: #06090d;
-    padding: 0 4rem;
+    padding: 2rem 4rem;
     padding-top: 6rem;
     /* overflow: hidden; */
 }
@@ -90,8 +90,6 @@
 /* .testimonials .cards .card .card-right .card-title {} */
 
 .testimonials button {
-    display: flex;
-    justify-content: center;
     padding: 10px 25px;
     border-radius: 10px;
     color: #000;
@@ -99,6 +97,7 @@
     text-transform: capitalize;
     font-size: 1.3rem;
     font-weight: 500;
+    display: block;
     margin: 20px auto;
     cursor: pointer;
     transition: .3s background;

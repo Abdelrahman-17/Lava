@@ -1,11 +1,11 @@
 import React from 'react'
-import Heroabout from '../about/heroabout/Heroabout'
+import Heroteam from './heroteam/Heroteam'
 import TeamMember from './teamMember/TeamMember'
 
 const Team = () => {
     return (
         <>
-            <Heroabout />
+            <Heroteam />
             <TeamMember />
         </>
     )

@@ -157,6 +157,378 @@
             "itemquantity": 1
         }
     ],
+    "bags_item": [
+        {
+            "id": 10,
+            "brand": "Apple",
+            "category": "womens-bags",
+            "description": "Women Shoulder Bags",
+            "title": "Women Shoulder Bags",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/71/2.jpg",
+            "price": "175",
+            "itemquantity": 1
+        },
+        {
+            "id": 11,
+            "brand": "Apple",
+            "category": "womens-bags",
+            "description": "Handbag For Girl",
+            "title": "Handbag For Girl",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/72/2.png",
+            "price": "360",
+            "itemquantity": 1
+        },
+        {
+            "id": 12,
+            "brand": "Apple",
+            "category": "womens-bags",
+            "description": "Fancy hand clutch",
+            "title": "Fancy hand clutch",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/73/2.webp",
+            "price": "285",
+            "itemquantity": 1
+        }
+    ],
+    "Women_watches_item": [
+        {
+            "id": 13,
+            "brand": "Apple",
+            "category": "womens-watches",
+            "description": "Elegant design, Stylish ,Unique & Trendy",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/66/1.jpg",
+            "price": "175",
+            "itemquantity": 1
+        },
+        {
+            "id": 14,
+            "brand": "Apple",
+            "category": "womens-watches",
+            "description": "Buy this awesome The product is origina",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/67/1.jpg",
+            "price": "380",
+            "itemquantity": 1
+        },
+        {
+            "id": 15,
+            "brand": "Apple",
+            "category": "womens-watches",
+            "description": "Product details of Golden Watch Pearls B",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/69/1.jpg",
+            "price": "235",
+            "itemquantity": 1
+        },
+        {
+            "id": 16,
+            "brand": "Apple",
+            "category": "womens-watches",
+            "description": "Fashion Skmei 1830 Shell Dial Stainless",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/70/1.jpg",
+            "price": "285",
+            "itemquantity": 1
+        },
+        {
+            "id": 17,
+            "brand": "Apple",
+            "category": "womens-watches",
+            "description": "Stylish Luxury Digital Watch For Girls /",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/68/1.jpg",
+            "price": "175",
+            "itemquantity": 1
+        }
+    ],
+    "men_watches_item": [
+        {
+            "id": 18,
+            "brand": "Apple",
+            "category": "mens-watches",
+            "description": "Style:Sport ,Clasp:Buckles ,Water Resist",
+            "title": "Waterproof Leather Brand Watch",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/61/1.jpg",
+            "price": "600",
+            "itemquantity": 1
+        },
+        {
+            "id": 19,
+            "brand": "Apple",
+            "category": "mens-watches",
+            "description": "Watch Crown With Environmental IPS Bronz",
+            "title": "Royal Blue Premium Watch",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/62/1.jpg",
+            "price": "230",
+            "itemquantity": 1
+        },
+        {
+            "id": 20,
+            "brand": "Apple",
+            "category": "mens-watches",
+            "description": "Men Silver Chain Royal Blue Premium Watc",
+            "title": "Leather Strap Skeon Watch",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/63/1.jpg",
+            "price": "250",
+            "itemquantity": 1
+        }
+    ],
+    "JEWLLERY_item": [
+        {
+            "id": 21,
+            "brand": "Apple",
+            "category": "womens-jewellery",
+            "description": "Silver Ring Set Women",
+            "title": "Silver Ring Set Women",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/76/2.jpg",
+            "price": "350",
+            "itemquantity": 1
+        },
+        {
+            "id": 22,
+            "brand": "Apple",
+            "category": "womens-jewellery",
+            "description": "Rose Ring",
+            "title": "Elegant Female Pearl Earrings",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/77/2.jpg",
+            "price": "150",
+            "itemquantity": 1
+        },
+        {
+            "id": 23,
+            "brand": "Apple",
+            "category": "womens-jewellery",
+            "description": "Silver Ring Set Women",
+            "title": "Rose Ring",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/79/1.jpg",
+            "price": "500",
+            "itemquantity": 1
+        }
+    ],
+    "tshirt_item": [
+        {
+            "id": 24,
+            "brand": "Apple",
+            "category": "mens-shirts",
+            "description": "Many store is creating new designs and t",
+            "title": "Money Heist Printed Summer T Shirts",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/51/1.png",
+            "price": "115",
+            "itemquantity": 1
+        },
+        {
+            "id": 25,
+            "brand": "Apple",
+            "category": "mens-shirts",
+            "description": "quality and professional print - It does",
+            "title": "Pubg Printed Graphic T-Shirt",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/52/1.png",
+            "price": "50",
+            "itemquantity": 1
+        },
+        {
+            "id": 26,
+            "brand": "Apple",
+            "category": "mens-shirts",
+            "description": "Brand: vintage Apparel ,Export quality",
+            "title": "Free Fire T shirts",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/53/1.webp",
+            "price": "170",
+            "itemquantity": 1
+        }
+    ],
+    "menclothes_item": [
+        {
+            "id": 30,
+            "brand": "Apple",
+            "category": "mens-clothes",
+            "description": "Microsoft Surface Laptop4",
+            "title": "women winter clothes",
+            "ImageUrl": "images/mensclothes1.jpg",
+            "price": "285",
+            "itemquantity": 1
+        },
+        {
+            "id": 31,
+            "brand": "Apple",
+            "category": "mens-clothes",
+            "description": "Microsoft Surface Laptop4",
+            "title": "women winter clothes",
+            "ImageUrl": "images/mensclothes2.jpg",
+            "price": "285",
+            "itemquantity": 1
+        },
+        {
+            "id": 32,
+            "brand": "Apple",
+            "category": "mens-clothes",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "images/mensclothes3.jpg",
+            "price": "899",
+            "itemquantity": 1
+        }
+    ],
+    "tops_item": [
+        {
+            "id": 33,
+            "brand": "Apple",
+            "category": "tops",
+            "description": "PACK OF 3 CAMISOLES ,VERY COMFORTABLE SO",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/37/1.jpg",
+            "price": "250",
+            "itemquantity": 1
+        },
+        {
+            "id": 34,
+            "brand": "Apple",
+            "category": "tops",
+            "description": "Cotton Solid Color Professional Wear Sle",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/36/1.jpg",
+            "price": "450",
+            "itemquantity": 1
+        },
+        {
+            "id": 35,
+            "brand": "Apple",
+            "category": "tops",
+            "description": "sublimation plain kids tank tops wholesa",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/38/1.png",
+            "price": "500",
+            "itemquantity": 1
+        }
+    ],
+    "phone_item": [
+        {
+            "id": 36,
+            "brand": "Apple",
+            "category": "smartphones",
+            "description": "An apple mobile which is nothing like ap",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/1/1.jpg",
+            "price": "2745",
+            "itemquantity": 1
+        },
+        {
+            "id": 37,
+            "brand": "Apple",
+            "category": "smartphones",
+            "description": "Samsung's new variant which goes beyond",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/3/1.jpg",
+            "price": "6245",
+            "itemquantity": 1
+        },
+        {
+            "id": 38,
+            "brand": "Apple",
+            "category": "smartphones",
+            "description": "OPPO F19 is officially announced on Apri",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/4/1.jpg",
+            "price": "1400",
+            "itemquantity": 1
+        }
+    ],
+    "laptops_item": [
+        {
+            "id": 39,
+            "brand": "Apple",
+            "category": "laptops",
+            "description": "MacBook Pro 2021 with mini-LED display m",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/6/1.png",
+            "price": "899",
+            "itemquantity": 1
+        },
+        {
+            "id": 40,
+            "brand": "Apple",
+            "category": "laptops",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/8/1.jpg",
+            "price": "899",
+            "itemquantity": 1
+        },
+        {
+            "id": 41,
+            "brand": "Apple",
+            "category": "laptops",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "price": "899",
+            "itemquantity": 1
+        }
+    ],
+    "automotive_item": [
+        {
+            "id": 42,
+            "brand": "Apple",
+            "category": "automotive",
+            "description": "Bluetooth Aux Bluetooth Car Aux Car Blue",
+            "title": "iPhon X",
+            "ImageUrl": "images/steel analog watch.jpg",
+            "price": "125",
+            "itemquantity": 1
+        },
+        {
+            "id": 43,
+            "brand": "Apple",
+            "category": "automotive",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "images/steel analog watch.jpg",
+            "price": "899",
+            "itemquantity": 1
+        },
+        {
+            "id": 44,
+            "brand": "Apple",
+            "category": "automotive",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "images/steel analog watch.jpg",
+            "price": "899",
+            "itemquantity": 1
+        }
+    ],
+    "motorcycle_item": [
+        {
+            "id": 45,
+            "brand": "Apple",
+            "category": "motorcycle",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "images/steel analog watch.jpg",
+            "price": "899",
+            "itemquantity": 1
+        },
+        {
+            "id": 46,
+            "brand": "Apple",
+            "category": "motorcycle",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "images/steel analog watch.jpg",
+            "price": "899",
+            "itemquantity": 1
+        },
+        {
+            "id": 47,
+            "brand": "Apple",
+            "category": "motorcycle",
+            "description": "Microsoft Surface Laptop4",
+            "title": "iPhon X",
+            "ImageUrl": "images/steel analog watch.jpg",
+            "price": "899",
+            "itemquantity": 1
+        }
+    ],
     "products": [
         {
             "id": 0,
@@ -1521,6 +1893,64 @@
             "img": "../src/assets/Team-Image2.png",
             "name": "Mohamed Wael",
             "track": "Full Stack Devoloper"
+        }
+    ],
+    "booking_services": [
+        {
+            "id": "0",
+            "title": "automatic car wash",
+            "ImageUrl": "../src/assets/Icon-3-Our-Service.png",
+            "price": "250",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "1",
+            "title": "Interior Detailing",
+            "ImageUrl": "../src/assets/Our-Service-Icon.png",
+            "price": "300",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "2",
+            "title": "Body Scratch Remover",
+            "ImageUrl": "../src/assets/Our-Service-Icon2.png",
+            "price": "150",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "4",
+            "title": "car engine wash",
+            "ImageUrl": "../src/assets/Our-Service-Icon4.png",
+            "price": "450",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "5",
+            "title": "automatic car wash",
+            "ImageUrl": "../src/assets/Icon-3-Our-Service.png",
+            "price": "250",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "6",
+            "title": "Interior Detailing",
+            "ImageUrl": "../src/assets/Our-Service-Icon.png",
+            "price": "300",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "7",
+            "title": "Body Scratch Remover",
+            "ImageUrl": "../src/assets/Our-Service-Icon2.png",
+            "price": "150",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+        },
+        {
+            "id": "8",
+            "title": "car engine wash",
+            "ImageUrl": "../src/assets/Our-Service-Icon4.png",
+            "price": "450",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
         }
     ]
 }

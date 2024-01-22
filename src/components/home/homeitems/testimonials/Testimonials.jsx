@@ -76,7 +76,8 @@ const Testimonials = () => {
             </div>
             <button>all testimonials</button>
             {/* </div> */}
-        </section>)
+        </section>
+    )
 }
 
 export default Testimonials

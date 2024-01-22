@@ -42,24 +42,49 @@ header .nav-menu nav {
 }
 
 .sidecart {
+    width: 400px;
     padding: 10px;
+    border-radius: 10px;
+    /* border: 2px solid #477cff; */
+    border-top: none;
     position: absolute;
-    top: 55px;
-    left: 0;
-    background-color: teal;
+    top: 75px;
+    left: 220px;
+    background-color: #06090d;
+    /* 0 0 10px #477cff, */
+    /* 0 0 20px #477cff, */
+    /* 0 0 30px #477cff, */
+    box-shadow:
+        0px 20px 30px 5px #477cff;
+
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+    max-height: 250px;
+    overflow: auto;
     visibility: hidden;
     opacity: 0;
     transition: .3s visibility, .3s opacity;
 }
 
+.sidecart>a {
+    margin: 10px auto;
+    color: white;
+    transition: .3s color;
+}
+
+.sidecart>a:hover {
+    color: #477cff;
+}
+
 .sidecart>div {
     display: grid;
-    grid-template-columns: 1fr 1fr 50px 1fr;
+    grid-template-columns: 6fr repeat(3, 1fr);
     gap: 10px;
-    border: 2px solid black;
+    background-color: #477cff;
+    border-radius: 10px;
+    margin: 10px 0;
+    /* border: 2px solid black; */
 }
 
 .sidecart.active {
@@ -75,29 +100,26 @@ header .nav-menu nav {
 
 .sidecart div p {
     padding: 10px;
-    font-size: 1.4rem;
-    border-right: 2px solid black;
+    font-size: 1.2rem;
+    /* border-right: 2px solid black; */
 }
 
-.sidecart div :nth-child(4) {
-    border: none;
-    border-left: 2px solid black;
-}
-
-.sidecart div img {
-    padding: 2px;
-    width: 100%;
-    height: 50px;
-    border-radius: 50%;
+.sidecart div button {
+    font-size: 2rem;
 }
 
 header .nav-menu nav a,
 .dropdown-btn {
-    margin-left: 25px;
+    /* margin-left: 25px; */
     font-size: 1.4rem;
     text-transform: capitalize;
     color: white;
     transition: .3s color;
+    transform: translateY(-3px);
+}
+
+header .nav-menu nav>a {
+    margin-left: 25px;
     transform: translateY(10px);
 }
 
@@ -105,15 +127,21 @@ header .nav-menu nav a,
     transform: translateY(0);
 }
 
-header .nav-menu a.cart {
-    position: relative;
+header .nav-menu .cart {
+    /* position: relative; */
+    display: flex;
+    margin-left: -13px;
 }
 
-header .nav-menu a.cart p {
+header .nav-menu .cart>* {
+    margin-right: 5px;
+}
+
+header .nav-menu .cart p {
     /* content: "0"; */
-    position: absolute;
-    top: -10px;
-    right: -15px;
+    /* position: absolute; */
+    /* top: -10px; */
+    /* right: -15px; */
     background-color: #477cff;
     color: #06090d;
     /* color: #477cff; */
@@ -126,10 +154,11 @@ header .nav-menu a.cart p {
     place-content: center;
 }
 
-header nav a:hover,
-header nav a.active,
-button:hover,
-button:active {
+
+header nav>a:hover,
+header nav>a.active,
+header nav>button:hover,
+header nav>button:active {
     color: #477cff;
     /* color: #47afff; */
     /* color: #47FFF4; */

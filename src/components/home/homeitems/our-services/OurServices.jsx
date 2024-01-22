@@ -60,7 +60,8 @@ const OurServices = () => {
         </div>
       </div>
       <button>more services</button>
-    </section>)
+    </section>
+  )
 }
 
 export default OurServices
