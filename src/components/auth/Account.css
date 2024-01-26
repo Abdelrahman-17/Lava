@@ -139,8 +139,7 @@ html::-webkit-scrollbar-thumb {
     transition: .5s;
 }
 
-.form-box .input-box input:focus~label,
-.form-box .input-box input:valid~label {
+.form-box .input-box input:focus~label {
     top: 5px;
 }
 

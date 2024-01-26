@@ -31,62 +31,67 @@ const Signup = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         setLoading(true);
-        try {
-            if (photoimage) {
-                // const userId = uuid()
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                const storageref = ref(storage, `photoimage/${user.uid}`)
-                await uploadBytesResumable(storageref, photoimage)
-                const downloadURL = await getDownloadURL(storageref)
-                await updateProfile(user, {
-                    displayName: username,
-                    photoURL: downloadURL,
-                });
-                await setDoc(doc(db, 'users', user.uid), {
-                    uid: user.uid,
-                    fullName: '',
-                    displayName: username,
-                    email: email,
-                    address: '',
-                    phoneNumber: phone,
-                    photoURL: downloadURL,
-                });
-                // await sendEmailVerification(auth.currentUser);
-                // toast.success("check your Email inbox to verified your email")
-                // await signOut(auth)
-                toast.success("Signin successfully");
-                setLoading(false)
-                navigate('/login')
+        if (!firstname || !lastname || !email || !phone || !password || !photoimage) {
+            setLoading(false)
+            toast.error("Please fill the form")
+        }
+        else {
+            try {
+                if (photoimage) {
+                    // const userId = uuid()
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    const storageref = ref(storage, `photoimage/${user.uid}`)
+                    await uploadBytesResumable(storageref, photoimage)
+                    const downloadURL = await getDownloadURL(storageref)
+                    await updateProfile(user, {
+                        displayName: `${firstname}${lastname}`,
+                        photoURL: downloadURL,
+                    });
+                    await setDoc(doc(db, 'users', user.uid), {
+                        uid: user.uid,
+                        fullName: '',
+                        displayName: `${firstname}${lastname}`,
+                        email: email,
+                        address: '',
+                        phoneNumber: phone,
+                        photoURL: downloadURL,
+                    });
+                    // await sendEmailVerification(auth.currentUser);
+                    // toast.success("check your Email inbox to verified your email")
+                    // await signOut(auth)
+                    toast.success("Signin successfully");
+                    setLoading(false)
+                    navigate('/login')
+                }
+                else {
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+                    await updateProfile(user, {
+                        displayName: `${firstname}${lastname}`,
+                        photoURL: "",
+                    });
+                    await setDoc(doc(db, 'users', user.uid), {
+                        uid: user.uid,
+                        fullName: '',
+                        displayName: `${firstname}${lastname}`,
+                        email: email,
+                        address: '',
+                        phoneNumber: phone,
+                        photoURL: '',
+                    });
+                    await sendEmailVerification(auth.currentUser);
+                    await signOut(auth)
+                    toast.success("check your Email inbox to verified your email")
+                    setLoading(false)
+                    navigate('/login')
+                }
             }
-            else {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                await updateProfile(user, {
-                    displayName: username,
-                    photoURL: "",
-                });
-                await setDoc(doc(db, 'users', user.uid), {
-                    uid: user.uid,
-                    fullName: '',
-                    displayName: username,
-                    email: email,
-                    address: '',
-                    phoneNumber: phone,
-                    photoURL: '',
-                });
-                await sendEmailVerification(auth.currentUser);
-                await signOut(auth)
-                toast.success("check your Email inbox to verified your email")
-                setLoading(false)
-                navigate('/login')
+            catch (error) {
+                setLoading(false);
+                toast.error(error.message);
             }
         }
-        catch (error) {
-            setLoading(false);
-            toast.error(error.message);
-        }
-
 
     }
     const handleGoogleSignup = async () => {
@@ -118,7 +123,7 @@ const Signup = () => {
     };
     return (
         <>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             {loading ? <Loader />
                 : <div className='body'>
                     {/* <div className="mb-8 -translate-y-5">
@@ -133,41 +138,41 @@ const Signup = () => {
                         <div className="form-box register">
                             <h2>Register</h2>
                             <form onSubmit={handleRegister}>
-                                {/* <div className="input-box">
-                                <span className="icon">
-                                    <ion-icon name="person"></ion-icon>
-                                </span>
-                                <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} required />
-                                <label>First Name</label>
-                            </div>
-                            <div className="input-box">
-                                <span className="icon">
-                                    <ion-icon name="person"></ion-icon>
-                                </span>
-                                <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} required />
-                                <label>Last Name</label>
-                            </div> */}
                                 <div className="input-box">
+                                    <span className="icon">
+                                        <ion-icon name="person"></ion-icon>
+                                    </span>
+                                    <input type="text" value={firstname} onChange={(e) => setFirstname(e.target.value)} />
+                                    <label>First Name</label>
+                                </div>
+                                <div className="input-box">
+                                    <span className="icon">
+                                        <ion-icon name="person"></ion-icon>
+                                    </span>
+                                    <input type="text" value={lastname} onChange={(e) => setLastname(e.target.value)} />
+                                    <label>Last Name</label>
+                                </div>
+                                {/* <div className="input-box">
                                     <span className="erroruser error text-danger"></span>
                                     <span className="icon">
                                         <ion-icon name="person"></ion-icon>
                                     </span>
-                                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+                                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}  />
                                     <label>Username</label>
-                                </div>
+                                </div> */}
                                 <div className="input-box">
                                     <span className="erroremail error text-danger"></span>
                                     <span className="icon">
                                         <ion-icon name="mail"></ion-icon>
                                     </span>
-                                    <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                                    <input type="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     <label>Email</label>
                                 </div>
                                 <div className="input-box">
                                     <span className="errorphone error text-danger"></span>
                                     <span className="icon">
                                         <ion-icon name="call"></ion-icon> </span>
-                                    <input type="tel" name="Phone" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} required />
+                                    <input type="tel" name="Phone" id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
                                     <label>Phone</label>
                                 </div>
                                 <div className="input-box">
@@ -175,7 +180,7 @@ const Signup = () => {
                                     <span className="icon">
                                         <ion-icon name="lock-closed"></ion-icon>
                                     </span>
-                                    <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                    <input type="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     <label>Password</label>
                                     <div className="strength"></div>
                                 </div>
@@ -184,12 +189,12 @@ const Signup = () => {
                                 <span className="icon">
                                     <ion-icon name="lock-closed"></ion-icon>
                                 </span>
-                                <input type="password" name="" id="confpassword" value={cPassword} onChange={(e) => setcPassword(e.target.value)} required />
+                                <input type="password" name="" id="confpassword" value={cPassword} onChange={(e) => setcPassword(e.target.value)}  />
                                 <label>Confirm Password</label>
                             </div> */}
                                 <label
                                     htmlFor="profile"
-                                    className="cursor-pointer flex items-center gap-3 justify-center my-3"
+                                    className="cursor-pointer flex items-center gap-3 justify-center my-2"
                                 >
                                     <p className='text-white'>Profile Image</p>
                                     {photoimage && (
@@ -216,7 +221,7 @@ const Signup = () => {
                                     </p>
                                 </div>
                             </form>
-                            <div className="flex items-center gap-3 my-5">
+                            <div className="flex items-center gap-3 my-2">
                                 <hr className="w-full border-slate-300" />
                                 <p className='text-white'>OR</p>
                                 <hr className="w-full border-slate-300" />

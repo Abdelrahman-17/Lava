@@ -26,7 +26,7 @@ import { getProducts } from './redux/slice/productslice'
 import { getorders } from './redux/slice/orderslice'
 import { sendEmailVerification, signOut, updateProfile } from 'firebase/auth'
 import { auth } from './firebase/config'
-import { toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import Loader from './components/loader/Loader'
 
 const App = () => {
@@ -55,6 +55,7 @@ const App = () => {
     <>
       {loading ? <Loader />
         : <>
+          <ToastContainer />
           <Navbar />
           <Routes>
             <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />

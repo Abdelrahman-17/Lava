@@ -45,7 +45,7 @@ const Navbar = () => {
 
     return (
         <>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             {currentUser &&
                 <>
                     {loading ? <Loader />

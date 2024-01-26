@@ -52,7 +52,7 @@ const Checkout = () => {
     }, [cart.length])
     return (
         <>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             <section className="checkout">
                 <div className="payment">
                     <div className="visa">
