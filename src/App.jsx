@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer'
 import LoginPage from './pages/accountpage/LoginPage'
 import SignupPage from './pages/accountpage/SignupPage'
 import StorePage from './pages/storepage/StorePage'
+import Productdetails from './components/store/productsdetail/Productdetails'
 import OrdersPage from './pages/orderspage/OrdersPage'
 import CartPage from './pages/cartpage/CartPage'
 import CheckoutPage from './pages/checkoutpage/CheckoutPage'
@@ -17,6 +18,7 @@ import SecurityPage from './pages/securitypage/SecurityPage'
 import BookingPage from './pages/bookingpage/BookingPage'
 // import Loader from './components/loader/Loader'
 import Admin from './components/admin/Admin';
+import Loader from './components/loader/Loader'
 import { AuthContext } from './context/AuthContext'
 import icon from './assets/logo.png'
 import loader from './assets/loader1.mp4'
@@ -27,7 +29,7 @@ import { getorders } from './redux/slice/orderslice'
 import { sendEmailVerification, signOut, updateProfile } from 'firebase/auth'
 import { auth } from './firebase/config'
 import { ToastContainer, toast } from 'react-toastify'
-import Loader from './components/loader/Loader'
+import Orderdetails from './components/orders/Orderdetails'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -62,7 +64,9 @@ const App = () => {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/signup' element={<SignupPage />} />
             <Route path='/store' element={<ProtectedRoute><StorePage /></ProtectedRoute>} />
+            <Route path='/productdetails/:id' element={<ProtectedRoute><Productdetails /></ProtectedRoute>} />
             <Route path='/orders' element={<ProtectedRoute><OrdersPage /></ProtectedRoute>} />
+            <Route path='/orderdetails/:id' element={<ProtectedRoute><Orderdetails /></ProtectedRoute>} />
             <Route path='/cart' element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
             <Route path='/booking' element={<ProtectedRoute><BookingPage /></ProtectedRoute>} />
             <Route path='/checkout' element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />

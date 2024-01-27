@@ -131,6 +131,7 @@ header .nav-menu .cart {
     /* position: relative; */
     display: flex;
     margin-left: -13px;
+    /* margin-left: 0px; */
 }
 
 header .nav-menu .cart>* {
@@ -155,8 +156,8 @@ header .nav-menu .cart p {
 }
 
 
-header nav>a:hover,
-header nav>a.active,
+header nav a:hover,
+header nav a.active,
 header nav>button:hover,
 header nav>button:active {
     color: #477cff;
@@ -304,19 +305,18 @@ header .dropdown .dropdown-menu a {
     header .nav-menu {
         position: absolute;
         width: 100%;
-        height: fit-content;
+        height: 0;
         background-color: rgb(41, 41, 41);
         z-index: 333;
-        top: 92px;
+        top: 110px;
         left: 0;
         display: grid;
         overflow: hidden;
-        height: 0;
         transition: 1s height;
     }
 
     header .nav-menu.active {
-        height: 420px;
+        height: 430px;
         padding-bottom: 20px;
     }
 
@@ -329,10 +329,21 @@ header .dropdown .dropdown-menu a {
         width: 100%;
     }
 
+    header .nav-menu nav .cart {
+        display: grid;
+        text-align: center;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     header .nav-menu .account a,
     header .nav-menu .account button {
         margin: 0;
         margin-left: 15px;
+        padding: 0px 35px;
+    }
+
+    header .nav-menu .account a>* {
+        transform: translateY(12px);
     }
 }
 

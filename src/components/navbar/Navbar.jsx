@@ -68,6 +68,12 @@ const Navbar = () => {
                                         <FaShoppingCart className="mx-2 inline-block" size={25} />
                                         <p>{totquantity}</p>
                                     </NavLink> */}
+                                    {/* <NavLink className='cart' to='/cart'>
+                                        Cart
+                                        <FaShoppingCart onClick={() => setSidecart(!sidecart)} className="cursor-pointer" size={25} />
+                                        <p>{totquantity}</p>
+                                    </NavLink> */}
+
                                     <NavLink className={activelink} to='/cart'>cart</NavLink>
                                     <div className='cart'>
                                         <FaShoppingCart onClick={() => setSidecart(!sidecart)} className="cursor-pointer" size={25} />

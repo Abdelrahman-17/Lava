@@ -2,9 +2,9 @@ import React from 'react'
 import './Heroabout.css'
 const Heroabout = () => {
     return (
-        <section class="home-about">
-            <div class="overlay">
-                <div class="home-content">
+        <section className="home-about">
+            <div className="overlay">
+                <div className="home-content">
                     <h2>About</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                 </div>

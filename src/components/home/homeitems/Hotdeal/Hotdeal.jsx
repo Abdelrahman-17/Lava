@@ -127,53 +127,53 @@ const Hotdeal = () => {
 
                         </Carousel.Item>
                     </Carousel> */}
-                    <div id="carouselExampleCaptions" data-bs-ride="carousel" class="carousel slide">
-                        <div class="img-cards carousel-inner">
-                            <div class="carousel-item ng-star-inserted active one">
+                    <div id="carouselExampleCaptions" data-bs-ride="carousel" className="carousel slide">
+                        <div className="img-cards carousel-inner">
+                            <div className="carousel-item ng-star-inserted active one">
                                 <div className="cards">{carouselUI}</div>
                             </div>
-                            <div class="carousel-item ng-star-inserted two">
+                            <div className="carousel-item ng-star-inserted two">
                                 <div className="cards">{carouselUI}</div>
                             </div>
-                            <div class="carousel-item ng-star-inserted three ">
+                            <div className="carousel-item ng-star-inserted three ">
                                 <div className="cards">{carouselUI}</div>
 
                             </div>
                         </div>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev"
-                            class="carousel-control-prev">
-                            <IoIosArrowBack size={35} aria-hidden="true" class="carousel-control-prev-icon bg-black text-[#0f5069e8] w-12 h-12" />
-                            <span class="hidden">Previous</span>
+                            className="carousel-control-prev">
+                            <IoIosArrowBack size={35} aria-hidden="true" className="carousel-control-prev-icon bg-black text-[#0f5069e8] w-12 h-12" />
+                            <span className="hidden">Previous</span>
                         </button>
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next"
-                            class="carousel-control-next">
-                            <IoIosArrowForward size={35} aria-hidden="true" class="carousel-control-next-icon bg-black text-[#0f5069e8] w-12 h-12" />
-                            <span class="hidden">Next</span>
+                            className="carousel-control-next">
+                            <IoIosArrowForward size={35} aria-hidden="true" className="carousel-control-next-icon bg-black text-[#0f5069e8] w-12 h-12" />
+                            <span className="hidden">Next</span>
                         </button>
                     </div>
                     <br />
-                    <div id="carouselExampleCaptionss" data-bs-ride="carousel" class="carousel slide">
-                        <div class="img-cards carousel-inner">
-                            <div class="carousel-item ng-star-inserted active one">
+                    <div id="carouselExampleCaptionss" data-bs-ride="carousel" className="carousel slide">
+                        <div className="img-cards carousel-inner">
+                            <div className="carousel-item ng-star-inserted active one">
                                 <div className="cards">{carouseldealUI}</div>
                             </div>
-                            <div class="carousel-item ng-star-inserted two">
+                            <div className="carousel-item ng-star-inserted two">
                                 <div className="cards">{carouseldealUI}</div>
                             </div>
-                            <div class="carousel-item ng-star-inserted three ">
+                            <div className="carousel-item ng-star-inserted three ">
                                 <div className="cards">{carouseldealUI}</div>
 
                             </div>
                         </div>
                         <button type="button" data-bs-target="#carouselExampleCaptionss" data-bs-slide="prev"
-                            class="carousel-control-prev">
-                            <IoIosArrowBack size={35} aria-hidden="true" class="carousel-control-prev-icon bg-black text-[#0f5069e8] w-12 h-12" />
-                            <span class="hidden">Previous</span>
+                            className="carousel-control-prev">
+                            <IoIosArrowBack size={35} aria-hidden="true" className="carousel-control-prev-icon bg-black text-[#0f5069e8] w-12 h-12" />
+                            <span className="hidden">Previous</span>
                         </button>
                         <button type="button" data-bs-target="#carouselExampleCaptionss" data-bs-slide="next"
-                            class="carousel-control-next">
-                            <IoIosArrowForward size={35} aria-hidden="true" class="carousel-control-next-icon bg-black text-[#0f5069e8] w-12 h-12" />
-                            <span class="hidden">Next</span>
+                            className="carousel-control-next">
+                            <IoIosArrowForward size={35} aria-hidden="true" className="carousel-control-next-icon bg-black text-[#0f5069e8] w-12 h-12" />
+                            <span className="hidden">Next</span>
                         </button>
                     </div>
                 </div>

@@ -8,12 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, cartitem, clearcart, decrease, removefromcart, totalprice, totalquantity } from '../../redux/slice/cartslice'
+import { favourititem } from '../../redux/slice/favouritslice'
 const Cart = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const cart = useSelector(cartitem)
     const totprice = useSelector(totalprice)
     const totquantity = useSelector(totalquantity)
+    const favourit = useSelector(favourititem)
 
     return (
         <>
@@ -31,7 +33,7 @@ const Cart = () => {
                                     <Fragment key={index}>
                                         <div className="cart">
                                             <div className="img w-25 me-4">
-                                                <img src={ele.ImageUrl} className="w-100 h-50" alt="" />
+                                                <img src={ele.thumbnail} className="w-100 h-50" alt="" />
                                             </div>
                                             <div className="card-details">
                                                 <div className="title">
@@ -97,6 +99,25 @@ const Cart = () => {
                     </>
                 }
             </section>
+            {/* {(favourit && favourit.length > 0) &&
+                    <section className='favourit'>
+                        <h2>Favourit Products</h2>
+                        <div className='favourit-cards'>
+                            {favourit.map((ele, index) => {
+                                return (
+                                    <div key={index} className='favourit-card'>
+                                        <img src={ele.thumbnail} />
+                                        <p>Product : {ele.title}</p>
+                                        <p>Category : {ele.category}</p>
+                                        <IoIosHeart onClick={() => deletefromfavoruit(ele)} color='red' size={35} />
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </section>
+                } */}
+
+
         </>
     )
 }

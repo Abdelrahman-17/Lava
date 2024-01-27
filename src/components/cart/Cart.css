@@ -214,6 +214,34 @@ div.cart {
     background-color: #477cff;
 }
 
+.favourit {
+    padding: 1.5rem 8rem;
+    position: relative;
+}
+
+.favourit h2 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.favourit .favourit-cards {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.favourit .favourit-cards .favourit-card {
+    color: white;
+    padding: 15px;
+    width: 300px;
+    background-color: rgb(33, 37, 41);
+}
+
+.favourit .favourit-cards .favourit-card img {
+    width: 200px;
+    height: 150px;
+}
+
 @media (max-width: 1200px) {
     .nocart {
         width: 380px;

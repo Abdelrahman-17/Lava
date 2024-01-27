@@ -1,4 +1,4 @@
-.container {
+.product-details {
     height: auto;
     margin: 60px auto;
     width: 70%;
@@ -12,44 +12,44 @@
     margin: 20px auto;
 }
 
-.head h2 {
+.product-details .head h2 {
     font-size: 2rem;
 }
 
-.image {
+.product-details .image {
     width: 32%;
     max-height: 50%;
     padding: 10px;
     border: 1px solid black;
 }
 
-.image img {
+.product-details .image img {
     width: 100%;
     height: 90%;
     object-fit: cover;
 }
 
-.text {
+.product-details .text {
     width: 62%;
     padding: 10px;
 }
 
-.title {
+.product-details .title {
     font-size: 1.5rem;
     margin: 0 0 10px 0;
 }
 
-.price {
+.product-details .price {
     font-size: 1.5rem;
     color: orangered;
     margin: 0;
 }
 
-.description {
+.product-details .description {
     font-size: 20px;
 }
 
-.addingbtn {
+.product-details .addingbtn {
     background-color: orangered;
     color: white;
     width: 30%;

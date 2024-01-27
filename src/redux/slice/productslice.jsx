@@ -35,13 +35,18 @@ const productslice = createSlice({
             for (const key in action.payload) {
                 state.productdata.push({
                     id: key,
+                    title: action.payload[key].title,
+                    description: action.payload[key].description,
+                    price: action.payload[key].price,
+                    discountPercentage: action.payload[key].discountPercentage,
+                    rating: action.payload[key].rating,
                     brand: action.payload[key].brand,
                     category: action.payload[key].category,
-                    description: action.payload[key].description,
-                    title: action.payload[key].title,
+                    thumbnail: action.payload[key].thumbnail,
                     ImageUrl: action.payload[key].ImageUrl,
-                    price: action.payload[key].price,
-                    itemquantity: action.payload[key].itemquantity
+                    itemquantity: action.payload[key].itemquantity,
+                    favourit: action.payload[key].favourit
+
                 })
             }
 

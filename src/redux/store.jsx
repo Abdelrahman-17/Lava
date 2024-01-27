@@ -5,13 +5,15 @@ import productslice from './slice/productslice';
 import filterslice from './slice/filterslice';
 import orderslice from './slice/orderslice';
 import bookingslice from './slice/bookingslice';
+import favouritslice from './slice/favouritslice';
 const rootreducer = combineReducers({
     auth: authslice.reducer,
     cart: cartslice.reducer,
     product: productslice.reducer,
     order: orderslice.reducer,
     filter: filterslice.reducer,
-    booking: bookingslice.reducer
+    booking: bookingslice.reducer,
+    favourit: favouritslice.reducer
 });
 const store = configureStore({
     reducer: rootreducer

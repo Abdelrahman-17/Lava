@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { addtocart } from '../../../redux/slice/cartslice';
+import { addtofavourit, favourititem } from '../../../redux/slice/favouritslice';
 function Productsitem({ products }) {
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -25,14 +26,14 @@ function Productsitem({ products }) {
                     products.map((ele, index) => {
                         return (
                             <div className="product-card" key={index}>
-                                <img src={ele.ImageUrl} className="card-img" alt="" />
+                                <img src={ele.thumbnail} className="card-img" alt="" />
                                 <h2 className="card-title">{ele.title}</h2>
                                 <p className="card-desc">{ele.description}</p>
                                 <p className="card-price">{+ele.price * ele.itemquantity} EGB</p>
                                 <div className="add-to-cart">
                                     <i onClick={() => dispatch(addtocart(ele))}><FiShoppingCart /></i>
-                                    <i><FiHeart /></i>
-                                    <i><FiSearch /></i>
+                                    <i onClick={() => dispatch(addtofavourit(ele))}><FiHeart /></i>
+                                    <i onClick={() => navigate(`/productdetails/${ele.id}`)}><FiSearch /></i>
 
                                 </div>
                             </div>
