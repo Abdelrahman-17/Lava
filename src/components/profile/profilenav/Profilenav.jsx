@@ -9,7 +9,7 @@ import { db } from '../../../firebase/config';
 import { FaUserCircle } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { ordershistory } from '../../../redux/slice/orderslice';
-
+import Loader from '../../loader/Loader'
 const Profilenav = ({ setActiveside }) => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
@@ -47,10 +47,31 @@ const Profilenav = ({ setActiveside }) => {
                     where("uid", "in", [currentUser?.uid]),
                 );
                 const usersSnapshot = await getDocs(usersQuery);
-                const deletePromises = usersSnapshot.docs.map((doc) =>
+                const deleteUser = usersSnapshot.docs.map((doc) =>
                     deleteDoc(doc.ref)
                 );
-                await Promise.all(deletePromises);
+                await Promise.all(deleteUser);
+
+                const chatsQuerySender = query(
+                    collection(db, "chats"),
+                    where("senderId", "in", [currentUser?.uid])
+                );
+                const chatsSnapshotSender = await getDocs(chatsQuerySender);
+                const deleteChatsSender = chatsSnapshotSender.docs.map((doc) =>
+                    deleteDoc(doc.ref)
+                );
+                await Promise.all(deleteChatsSender);
+
+                const chatsQueryReceiver = query(
+                    collection(db, "chats"),
+                    where("receiverId", "in", [currentUser?.uid])
+                );
+                const chatsSnapshotReceiver = await getDocs(chatsQueryReceiver);
+                const deleteChatsReceiver = chatsSnapshotReceiver.docs.map((doc) =>
+                    deleteDoc(doc.ref)
+                );
+                await Promise.all(deleteChatsReceiver)
+
                 orders.map(async (ele) => {
                     await fetch(`https://lava-11a9b-default-rtdb.firebaseio.com/orders/${ele.id}.json`, {
                         method: "DELETE",
@@ -62,7 +83,6 @@ const Profilenav = ({ setActiveside }) => {
             } catch (error) {
                 toast.error("Error clearing messages:", error.message);
                 setLoading(false)
-
             }
         });
     }
@@ -70,47 +90,51 @@ const Profilenav = ({ setActiveside }) => {
     const activeside = ({ isActive }) => (isActive ? setActiveside(true) : setActiveside(false))
     return (
         <>
-            <div className='nav'>
-                <div className='user'>
-                    {currentUser?.photoURL ?
-                        <img src={currentUser?.photoURL} className='icon inline-block' width={60} />
-                        :
-                        <FaUserCircle className='icon inline-block' size={60} color="#fff" />
-                    }
-                    {/* <img src={currentUser?.photoURL} alt="" /> */}
-                    <h4>{currentUser?.displayName}</h4>
+            {loading ? <Loader />
+                : <div className='nav'>
+                    <div className='user'>
+                        {currentUser?.photoURL ?
+                            <img src={currentUser?.photoURL} className='icon inline-block' width={60} />
+                            :
+                            <FaUserCircle className='icon inline-block' size={60} color="#fff" />
+                        }
+                        {/* <img src={currentUser?.photoURL} alt="" /> */}
+                        <h4>{currentUser?.displayName}</h4>
+                    </div>
+                    <div className='listcontainer'>
+                        <ul className='list'>
+                            <li>
+                                <NavLink className={activelink} to='/profile/orders'>
+                                    history
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={activelink} to='/profile/security'>
+                                    security
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={activelink} to='/'>
+                                    notification
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink className={activeside} to='/profile/chat'>
+                                    chat
+                                </NavLink>
+                            </li>
+                            <li>
+                                <button onClick={logouthandler}>Logout</button>
+                            </li>
+                            <li>
+                                <button onClick={deleteaccount}>delete accout</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div className='listcontainer'>
-                    <ul className='list'>
-                        <li>
-                            <NavLink className={activelink} to='/profile/orders'>
-                                history
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className={activelink} to='/profile/security'>
-                                security
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className={activelink} to='/'>
-                                notification
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink className={activeside} to='/profile/chat'>
-                                chat
-                            </NavLink>
-                        </li>
-                        <li>
-                            <button onClick={logouthandler}>Logout</button>
-                        </li>
-                        <li>
-                            <button onClick={deleteaccount}>delete accout</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
+            }
+
         </>
     )
 }
