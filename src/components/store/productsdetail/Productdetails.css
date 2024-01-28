@@ -6,7 +6,7 @@
     min-height: 75vh;
 }
 
-.content {
+.product-details .content {
     display: flex;
     justify-content: space-between;
     margin: 20px auto;
@@ -57,53 +57,53 @@
 }
 
 @media screen and (max-width: 1700px) {
-    .container {
+    .product-details .container {
         width: 80%;
         height: 76.5vh;
     }
 }
 
 @media screen and (max-width: 1200px) {
-    .text {
+    .product-details .text {
         width: 60%;
     }
 }
 
 @media screen and (max-width: 900px) {
-    .text {
+    .product-details .text {
         width: 40%;
     }
 
-    .image {
+    .product-details .image {
         width: 55%;
     }
 
-    .addingbtn {
+    .product-details .addingbtn {
         width: 50%;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .container {
+    .product-details .container {
         height: auto;
     }
 
-    .content {
+    .product-details .content {
         display: block;
         text-align: center;
         margin: 10px auto;
     }
 
-    .image {
+    .product-details .image {
         margin: auto;
     }
 
-    .text {
+    .product-details .text {
         margin: auto;
         width: 80%;
     }
 
-    .addingbtn {
+    .product-details .addingbtn {
         margin: auto;
     }
 

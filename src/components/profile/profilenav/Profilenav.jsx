@@ -7,23 +7,39 @@ import { toast } from 'react-toastify';
 import { collection, deleteDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../../../firebase/config';
 import { FaUserCircle } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import { ordershistory } from '../../../redux/slice/orderslice';
 
 const Profilenav = ({ setActiveside }) => {
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false)
     // const currentUser = useSelector(authuser);
     // const [activeside, setActiveside] = useState(false)
     const { currentUser } = useContext(AuthContext)
+    const getorders = useSelector(ordershistory)
+    // const [getorders, setGetorders] = useState([])
+    // let currentUser = useSelector(authuser)
+    let orders = []
+    getorders.filter(ele => {
+        if (ele.uid === currentUser?.uid) {
+            orders.push(ele)
+        }
+    })
     const auth = getAuth();
     const user = auth.currentUser;
     const logouthandler = () => {
+        setLoading(true)
         signOut(auth).then(() => {
             navigate("/");
             toast.success("logout succeessful...")
+            setLoading(false)
         }).catch((error) => {
             toast.error(error.message)
+            setLoading(false)
         });
     }
     const deleteaccount = () => {
+        setLoading(true)
         user.delete().then(async () => {
             try {
                 const usersQuery = query(
@@ -35,9 +51,18 @@ const Profilenav = ({ setActiveside }) => {
                     deleteDoc(doc.ref)
                 );
                 await Promise.all(deletePromises);
+                orders.map(async (ele) => {
+                    await fetch(`https://lava-11a9b-default-rtdb.firebaseio.com/orders/${ele.id}.json`, {
+                        method: "DELETE",
+                    })
+                    dispatch(getorders())
+                })
                 toast.success("delete accout succeessful...")
+                setLoading(false)
             } catch (error) {
-                console.error("Error clearing messages:", error);
+                toast.error("Error clearing messages:", error.message);
+                setLoading(false)
+
             }
         });
     }

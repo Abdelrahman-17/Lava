@@ -30,6 +30,7 @@ const Addproduct = () => {
         description: "",
         category: "",
         brand: "",
+        favourit: false
     }
     const [curentproduct, setcurentproduct] = useState(() => {
         const newstate = formkind(id, { ...initialproduct }, productEdite)
@@ -37,9 +38,9 @@ const Addproduct = () => {
     })
     useEffect(() => {
         if (curentproduct) {
-            setImagePreview(curentproduct?.ImageUrl);
+            setImagePreview(curentproduct?.thumbnail);
         }
-    }, [curentproduct])
+    }, [curentproduct?.thumbnail])
     const category = [
         "All",
         ...new Set(product.map((products) => products.category)),
@@ -81,12 +82,13 @@ const Addproduct = () => {
                     method: "POST",
                     body: JSON.stringify({
                         title: curentproduct.title,
-                        ImageUrl: imageUrl,
+                        thumbnail: imageUrl,
                         price: curentproduct.price,
                         description: curentproduct.description,
                         itemquantity: curentproduct.itemquantity,
                         category: curentproduct.category,
                         brand: curentproduct.brand,
+                        favourit: curentproduct.favourit,
                         review: ""
                     })
                 })
@@ -124,12 +126,13 @@ const Addproduct = () => {
                     method: "PUT",
                     body: JSON.stringify({
                         title: curentproduct.title,
-                        ImageUrl: imageUrl,
+                        thumbnail: imageUrl,
                         price: curentproduct.price,
                         description: curentproduct.description,
                         itemquantity: curentproduct.itemquantity,
                         category: curentproduct.category,
                         brand: curentproduct.brand,
+                        favourit: curentproduct.favourit,
                         review: ""
                     })
                 })

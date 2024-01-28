@@ -7,9 +7,8 @@ const initialState = {
     maxPrice: 5,
 }
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
-    return await axios.get("https://lava-11a9b-default-rtdb.firebaseio.com/products.json")
-        .then(res => res.data)
-        .catch((error) => console.log(error))
+    return fetch("https://lava-11a9b-default-rtdb.firebaseio.com//products.json")
+        .then((respons) => { return respons.json() })
 });
 const productslice = createSlice({
     name: "products",
@@ -38,12 +37,12 @@ const productslice = createSlice({
                     title: action.payload[key].title,
                     description: action.payload[key].description,
                     price: action.payload[key].price,
-                    discountPercentage: action.payload[key].discountPercentage,
-                    rating: action.payload[key].rating,
+                    // discountPercentage: action.payload[key].discountPercentage,
+                    // rating: action.payload[key].rating,
                     brand: action.payload[key].brand,
                     category: action.payload[key].category,
                     thumbnail: action.payload[key].thumbnail,
-                    ImageUrl: action.payload[key].ImageUrl,
+                    // ImageUrl: action.payload[key].ImageUrl,
                     itemquantity: action.payload[key].itemquantity,
                     favourit: action.payload[key].favourit
 

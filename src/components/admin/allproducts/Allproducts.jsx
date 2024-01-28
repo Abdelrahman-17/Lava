@@ -81,7 +81,7 @@ const Allproducts = () => {
                             <tr key={index}>
                                 <td>{index}</td>
                                 <td className="p-4">
-                                    <img className={styles.imgg} src={pro.ImageUrl} />
+                                    <img className={styles.imgg} src={pro.thumbnail} />
                                 </td>
                                 <td>{pro.title}</td>
                                 <td>{pro.category}</td>
