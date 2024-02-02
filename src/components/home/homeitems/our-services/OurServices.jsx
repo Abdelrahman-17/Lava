@@ -1,13 +1,28 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './OurServices.css'
 import Icon1 from '../../../../assets/Icon-3-Our-Service.png'
 import Icon2 from '../../../../assets/Our-Service-Icon.png'
 import Icon3 from '../../../../assets/Our-Service-Icon2.png'
 import Icon4 from '../../../../assets/Our-Service-Icon4.png'
-
+import data from '../../../../../public/data.json'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addservicetobooking } from '../../../../redux/slice/bookingslice'
 const OurServices = () => {
+  const [services, setServices] = useState([])
+  useEffect(() => {
+    if (data) {
+      setServices(data.booking_services)
+    }
+  }, [data])
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const ourservicesref = useRef()
   const [active, setActive] = useState(true)
+  const addservicebooking = (ele) => {
+    dispatch(addservicetobooking(ele))
+    navigate(`/bookingdetails/${ele.id}`)
+  }
   // window.onscroll = () => {
   //   let ourservicescontaintop = ourservicesref.current.offsetTop;
   //   let ourservicesheight = ourservicesref.current.offsetHeight;
@@ -30,7 +45,7 @@ const OurServices = () => {
       <h3>our services</h3>
       <h2>our comprehensive services</h2>
       <div className="container-cards">
-        <div className={`${active ? "card active" : "card"}`}>
+        {/* <div className={`${active ? "card active" : "card"}`}>
           <img className="card-icon" src={Icon1} alt="img" />
           <h3 className="card-title">automatic car wash</h3>
           <p className="card-desc">Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.
@@ -57,7 +72,20 @@ const OurServices = () => {
           <p className="card-desc">Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.
           </p>
           <button className="card-btn">Read more</button>
-        </div>
+        </div> */}
+        {
+          services &&
+          services.map((ele, index) => {
+            return (
+              <div className={`${active ? "card active" : "card"}`} key={index}>
+                <img className="card-icon" src={ele.ImageUrl} alt="img" />
+                <h3 className="card-title">{ele.title}</h3>
+                <p className="card-desc">{ele.description}</p>
+                <button className="card-btn" onClick={() => addservicebooking(ele)}>Add booking</button>
+              </div>
+            )
+          })
+        }
       </div>
       <button>more services</button>
     </section>

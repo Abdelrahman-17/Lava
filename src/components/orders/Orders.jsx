@@ -4,26 +4,12 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 import { authuser } from '../../redux/slice/authslice'
 import { AuthContext } from '../../context/AuthContext'
+import { Link } from 'react-router-dom'
+import { ordershistory } from '../../redux/slice/orderslice'
 const Orders = () => {
-    let account_user = localStorage.getItem("account")
-    let account = JSON.parse(account_user)
-    let admin_user = localStorage.getItem("admin")
-    let admin = JSON.parse(admin_user)
-    const [getorders, setGetorders] = useState([])
-    // let currentUser = useSelector(authuser)
+    const getorders = useSelector(ordershistory)
+    // const [getorders, setGetorders] = useState([])
     const { currentUser } = useContext(AuthContext)
-    // console.log(ord);
-    // useEffect(() => {
-    // if (account) {
-    //     get_order = localStorage.getItem(`orders${account.username}`)
-    //     orders = JSON.parse(get_order)
-    // }
-    // else if (admin) {
-    //     get_order = localStorage.getItem(`orders${admin.username}`)
-    //     orders = JSON.parse(get_order)
-    // }
-    // }, [])
-    // console.log(orders);
     const deletefromorders = (a) => {
         const objWithIdIndex = orders.findIndex((obj) => obj.id === a)
         orders.orders.splice(objWithIdIndex, 1)
@@ -35,13 +21,7 @@ const Orders = () => {
         //     window.location.reload()
         // }
     }
-    useEffect(() => {
-        axios.get("https://lava-11a9b-default-rtdb.firebaseio.com/orders.json")
-            .then(res => {
-                setGetorders(res.data)
-            })
-            .catch(err => console.log(err))
-    }, [])
+
     let orders = []
     for (const key in getorders) {
         if (getorders[key].uid === currentUser?.uid) {
@@ -59,17 +39,11 @@ const Orders = () => {
     // console.log('orders', orders);
     let items = []
     for (const key of orders) {
-        console.log(key);
+        // console.log(key);
         key.map(ele => items.push(ele))
     }
     return (
         <section className="orders">
-            {/* <h2>Order Details</h2>  */}
-            {/* <p><b>Order ID :</b>{theorder[0]?.id}</p>  */}
-            {/* <p><b>Order Amount :</b>{theorder[0]?.orderamount}</p>  */}
-            {/* {
-                orders && <h2>Hello {orders}</h2>
-            } */}
             {orders ?
                 <>
                     <h2>Hello {currentUser?.displayName}</h2>
@@ -109,7 +83,7 @@ const Orders = () => {
                         <h5 >Shopping cart is empty !</h5>
                         <p >push some products into your cart</p>
                         <div>
-                            <a href="home.html" className="btn btn-warning text-end">Back to Home</a>
+                            <Link to='/' className="btn btn-warning text-end">Back to Home</Link>
                         </div>
                     </div>
                 </>

@@ -1,24 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import Infobox from "../../ui/Infobox";
 import styles from "./Home.module.css"
 import { AiFillDollarCircle } from "react-icons/ai";
 import { BsCart4 } from "react-icons/bs";
 import { FaCartArrowDown } from "react-icons/fa";
 import { productdata } from "../../../redux/slice/productslice"
-import { ordershistory, earning, calcearning } from "../../../redux/slice/orderslice"
+import { bookingshistory, earning, calcearning } from "../../../redux/slice/bookingslice"
 import { useSelector, useDispatch } from "react-redux";
 import Chart from "../chart/Chart"
-const Adminhome = () => {
+import data from '../../../../public/data.json'
+const Adminhomebooking = () => {
     const earningIcon = <AiFillDollarCircle size={30} color="#b624ff" />;
     const productIcon = <BsCart4 size={30} color="#1f93ff" />;
     const ordersIcon = <FaCartArrowDown size={30} color="orangered" />
     const dispatch = useDispatch();
-    const product = useSelector(productdata);
-    const orders = useSelector(ordershistory);
+    // const product = useSelector(productdata);
+    const [product, setProduct] = useState([]);
+    const booking = useSelector(bookingshistory);
     const earn = useSelector(earning)
     useEffect(() => {
         dispatch(calcearning());
     })
+    useEffect(() => {
+        if (data) {
+            setProduct(data.booking_services)
+        }
+    }, [data])
     return (
         <div className={styles.container}>
             <h2>Admin Home</h2>
@@ -40,16 +47,16 @@ const Adminhome = () => {
                 <div className={`${styles.box} ${styles.card3}`}>
                     <p>Orders</p>
                     <div className={styles.content}>
-                        <p>{orders.length}</p>
+                        <p>{booking.length}</p>
                         {ordersIcon}
                     </div>
                 </div>
 
             </div>
             <div className={styles.chart}>
-                <Chart order={orders} />
+                <Chart order={booking} />
             </div>
         </div>
     )
 }
-export default Adminhome
+export default Adminhomebooking

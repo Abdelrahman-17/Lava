@@ -18,10 +18,15 @@ const Adminnav = () => {
             <div className='listcontainer'>
                 <ul className='list'>
                     <li>
-                        <NavLink to="/admin/home" className={activelink}>
-                            Home
+                        <NavLink to="/admin/home-orders" className={activelink}>
+                            Orders
                         </NavLink>
                     </li>
+                    {/* <li>
+                        <NavLink to="/admin/home-booking" className={activelink}>
+                            Booking
+                        </NavLink>
+                    </li> */}
                     <li>
                         <NavLink to="/admin/all-products" className={activelink}>
                             All Products
@@ -32,6 +37,16 @@ const Adminnav = () => {
                             Add Product
                         </NavLink>
                     </li>
+                    {/* <li>
+                        <NavLink to="/admin/all-services" className={activelink}>
+                            All Services
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/admin/add-service/Add" className={activelink}>
+                            Add Service
+                        </NavLink>
+                    </li> */}
                 </ul>
             </div>
         </div>

@@ -6,18 +6,20 @@ import { addtocart } from "../../../redux/slice/cartslice"
 import { productdata } from '../../../redux/slice/productslice';
 function Productdetails() {
     const { id } = useParams();
+    console.log(id);
     const product = useSelector(productdata)
     const productdetails = product.filter((pro) => pro.id === id);
     const dispatch = useDispatch()
     const additem = () => {
         dispatch(addtocart(productdetails[0]))
     }
+
     return (
         <>
             <div className="product-details">
                 <div className="head">
                     <h2><b>Product Details</b></h2>
-                    <Link to="/store">&larr; Back To Products</Link>
+                    <Link to="/store">&larr; Back To Store</Link>
                 </div>
                 <div className="content">
                     <div className="image">
@@ -33,6 +35,7 @@ function Productdetails() {
                     </div>
                 </div>
             </div>
+
         </>
     )
 }

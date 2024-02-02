@@ -30,12 +30,19 @@ import { sendEmailVerification, signOut, updateProfile } from 'firebase/auth'
 import { auth } from './firebase/config'
 import { ToastContainer, toast } from 'react-toastify'
 import Orderdetails from './components/orders/Orderdetails'
+import NotFound from './pages/NotFound/NotFound'
+import Bookingdetails from './components/booking/bookingdetails/Bookingdetails'
+import Bookingconfirm from './components/booking/bookingconfirm/Bookingconfirm'
+import { getbooking } from './redux/slice/bookingslice'
+import { getservices } from './redux/slice/serviceslice'
 
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProducts());
-    dispatch(getorders())
+    dispatch(getorders());
+    dispatch(getbooking());
+    dispatch(getservices())
   }, [dispatch])
   const { currentUser, loading } = useContext(AuthContext);
   const ProtectedRoute = ({ children }) => {
@@ -69,6 +76,10 @@ const App = () => {
             <Route path='/orderdetails/:id' element={<ProtectedRoute><Orderdetails /></ProtectedRoute>} />
             <Route path='/cart' element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
             <Route path='/booking' element={<ProtectedRoute><BookingPage /></ProtectedRoute>} />
+            {/* <Route path='/booking/bookingdetails/:id' element={<ProtectedRoute><BookingPage /></ProtectedRoute>} /> */}
+            <Route path='/bookingdetails/:id' element={<ProtectedRoute><Bookingdetails /></ProtectedRoute>} />
+            <Route path='/bookingconfirm' element={<ProtectedRoute><Bookingconfirm /></ProtectedRoute>} />
+            <Route path='/profile/*' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
             <Route path='/checkout' element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
             <Route path='/profile/*' element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
             <Route path='/chat' element={<ProtectedRoute><ChatPage /></ProtectedRoute>} />
@@ -76,7 +87,9 @@ const App = () => {
             <Route path='/About' element={<ProtectedRoute><AboutPage /></ProtectedRoute>} />
             <Route path='/Team' element={<ProtectedRoute><TeamPage /></ProtectedRoute>} />
             <Route path='/admin/*' element={<Onlyadmin><Admin /></Onlyadmin>} />
-            <Route path='/*' element={<Navigate to="/" />} />
+            {/* <Route path='/*' element={<Navigate to="/" />} /> */}
+            <Route path='/*' element={<NotFound />} />
+
           </Routes>
           <Footer />
         </>

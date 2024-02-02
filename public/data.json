@@ -1898,59 +1898,133 @@
     "booking_services": [
         {
             "id": "0",
-            "title": "automatic car wash",
-            "ImageUrl": "../src/assets/Icon-3-Our-Service.png",
-            "price": "250",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "title": "Dry car wash",
+            "ImageUrl": "https://firebasestorage.googleapis.com/v0/b/lava-11a9b.appspot.com/o/DryWash.png?alt=media&token=668ff334-ca42-4a3b-ba25-637e7f00a6af",
+            "serviceprice": "50",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.",
+            "serviceduration": "1.5H"
         },
         {
             "id": "1",
-            "title": "Interior Detailing",
-            "ImageUrl": "../src/assets/Our-Service-Icon.png",
-            "price": "300",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "title": "Steam car wash",
+            "ImageUrl": "https://firebasestorage.googleapis.com/v0/b/lava-11a9b.appspot.com/o/SteamWash.png?alt=media&token=b1bc0b30-3951-4024-80f6-4a7e498c891b",
+            "serviceprice": "70",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.",
+            "serviceduration": "2.5H"
         },
         {
             "id": "2",
-            "title": "Body Scratch Remover",
-            "ImageUrl": "../src/assets/Our-Service-Icon2.png",
-            "price": "150",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "title": "Foam car wash",
+            "ImageUrl": "https://firebasestorage.googleapis.com/v0/b/lava-11a9b.appspot.com/o/FoamWash.png?alt=media&token=f14895a7-ebc6-4889-bd13-2f056972a6a7",
+            "serviceprice": "65",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.",
+            "serviceduration": "1H"
         },
         {
             "id": "4",
-            "title": "car engine wash",
-            "ImageUrl": "../src/assets/Our-Service-Icon4.png",
-            "price": "450",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "title": "Polishing the car surface",
+            "ImageUrl": "https://firebasestorage.googleapis.com/v0/b/lava-11a9b.appspot.com/o/Polishing%20the%20car%20surface.png?alt=media&token=370a15c1-2a4f-4d75-b5d9-b66e634b7a3b",
+            "serviceprice": "90",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.",
+            "serviceduration": "0.5H"
         },
         {
             "id": "5",
-            "title": "automatic car wash",
-            "ImageUrl": "../src/assets/Icon-3-Our-Service.png",
-            "price": "250",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "title": "Engine car wash",
+            "ImageUrl": "https://firebasestorage.googleapis.com/v0/b/lava-11a9b.appspot.com/o/EngineWash.png?alt=media&token=73ce7004-57cd-43b7-b9a2-ef2b3310fb48",
+            "serviceprice": "95",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.",
+            "serviceduration": "3H"
         },
         {
             "id": "6",
-            "title": "Interior Detailing",
-            "ImageUrl": "../src/assets/Our-Service-Icon.png",
-            "price": "300",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
-        },
+            "title": "Seats car wash",
+            "ImageUrl": "https://firebasestorage.googleapis.com/v0/b/lava-11a9b.appspot.com/o/SeatsWash.png?alt=media&token=94901bb1-66db-4b52-afe8-b4122c2ecb69",
+            "serviceprice": "65",
+            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing.",
+            "serviceduration": "2.5H"
+        }
+    ],
+    "cars": [
         {
-            "id": "7",
-            "title": "Body Scratch Remover",
-            "ImageUrl": "../src/assets/Our-Service-Icon2.png",
+            "id": "0",
+            "name": "sport",
+            "model": [
+                "2x",
+                "3x",
+                "4x",
+                "6x"
+            ],
+            "brand": "honda",
+            "ImageUrl": "../src/assets/DryWash.png",
             "price": "150",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "color": [
+                "red",
+                "green",
+                "yellow",
+                "blue",
+                "black"
+            ]
         },
         {
-            "id": "8",
-            "title": "car engine wash",
-            "ImageUrl": "../src/assets/Our-Service-Icon4.png",
-            "price": "450",
-            "description": "Lorem ipsum dolor sit amet consectetur. Mauris mauris tortor aliquam adipiscing."
+            "id": "1",
+            "name": "sport",
+            "model": [
+                "2x",
+                "3x",
+                "4x",
+                "6x"
+            ],
+            "brand": "verrae",
+            "ImageUrl": "../src/assets/DryWash.png",
+            "price": "150",
+            "color": [
+                "red",
+                "green",
+                "yellow",
+                "blue",
+                "black"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "sport",
+            "model": [
+                "2x",
+                "3x",
+                "4x",
+                "6x"
+            ],
+            "brand": "omega",
+            "ImageUrl": "../src/assets/DryWash.png",
+            "price": "150",
+            "color": [
+                "red",
+                "green",
+                "yellow",
+                "blue",
+                "black"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "sport",
+            "model": [
+                "2x",
+                "3x",
+                "4x",
+                "6x"
+            ],
+            "brand": "tenza",
+            "ImageUrl": "../src/assets/DryWash.png",
+            "price": "150",
+            "color": [
+                "red",
+                "green",
+                "yellow",
+                "blue",
+                "black"
+            ]
         }
     ]
 }

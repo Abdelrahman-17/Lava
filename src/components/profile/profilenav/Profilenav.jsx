@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Profilenav.css'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
@@ -10,21 +10,31 @@ import { FaUserCircle } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { ordershistory } from '../../../redux/slice/orderslice';
 import Loader from '../../loader/Loader'
+import { bookingshistory } from '../../../redux/slice/bookingslice';
 const Profilenav = ({ setActiveside }) => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
-    // const currentUser = useSelector(authuser);
     // const [activeside, setActiveside] = useState(false)
     const { currentUser } = useContext(AuthContext)
     const getorders = useSelector(ordershistory)
-    // const [getorders, setGetorders] = useState([])
-    // let currentUser = useSelector(authuser)
-    let orders = []
-    getorders.filter(ele => {
-        if (ele.uid === currentUser?.uid) {
-            orders.push(ele)
+    const getbooking = useSelector(bookingshistory)
+    const [orders, setOrders] = useState(false)
+    const [booking, setBooking] = useState(false)
+
+    useEffect(() => {
+        if (getorders) {
+            const res = getorders.filter(ele => ele.uid === currentUser?.uid)
+            setOrders(res)
         }
-    })
+    }, [getorders])
+    useEffect(() => {
+        if (getbooking) {
+            const res = getbooking.filter(ele => ele.uid === currentUser?.uid)
+            setBooking(res)
+        }
+    }, [getbooking])
+
+    console.log('booking', booking);
     const auth = getAuth();
     const user = auth.currentUser;
     const logouthandler = () => {
@@ -77,6 +87,13 @@ const Profilenav = ({ setActiveside }) => {
                         method: "DELETE",
                     })
                     dispatch(getorders())
+                })
+
+                booking.map(async (ele) => {
+                    await fetch(`https://lava-11a9b-default-rtdb.firebaseio.com/booking/${ele.id}.json`, {
+                        method: "DELETE",
+                    })
+                    dispatch(getbooking())
                 })
                 toast.success("delete accout succeessful...")
                 setLoading(false)
