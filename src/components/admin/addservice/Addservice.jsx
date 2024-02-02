@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./Addservice.module.css"
 // import Card from "../../ui/Card"
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { getProducts, productdata } from "../../../redux/slice/productslice"
 import { useDispatch, useSelector } from "react-redux";
 import { MdPhotoCameraBack } from 'react-icons/md'
 import { toast } from "react-toastify";
 import { getDownloadURL, getStorage, ref, uploadString } from "firebase/storage";
 import Loader from '../../loader/Loader'
 import data from '../../../../public/data.json'
-import { servicesdata } from '../../../redux/slice/serviceslice'
+import { getservices, servicesdata } from '../../../redux/slice/serviceslice'
 const Addservice = () => {
     const { id } = useParams();
     // const [services, setServices] = useState([]);
@@ -33,7 +32,6 @@ const Addservice = () => {
     }
     const initialservice = {
         title: "",
-        ImageUrl: "",
         serviceprice: "",
         description: "",
         serviceduration: ""
@@ -67,7 +65,7 @@ const Addservice = () => {
     }
     const addservice = async (e) => {
         e.preventDefault();
-        if (image && curentservice.title && curentservice.ImageUrl && curentservice.description && curentservice.serviceprice && curentservice.serviceduration) {
+        if (image && curentservice.title && curentservice.description && curentservice.serviceprice && curentservice.serviceduration) {
             try {
                 let imageUrl = null;
                 if (image) {
@@ -94,8 +92,8 @@ const Addservice = () => {
                 toast.success("Product Added successful", {
                     position: "top-right",
                 })
-                navigate('/admin/all-products')
-                dispatch(gets())
+                navigate('/admin/all-services')
+                dispatch(getservices())
             }
             catch (error) {
                 toast.error(error.message);
@@ -135,8 +133,8 @@ const Addservice = () => {
                 toast.success("Product Edited successful", {
                     position: "top-right",
                 })
-                navigate('/admin/all-products')
-                dispatch(getProducts())
+                navigate('/admin/all-services')
+                dispatch(getservices())
             }
             catch (error) {
                 toast.error(error.message);
@@ -181,10 +179,10 @@ const Addservice = () => {
                     )}
                     <br />
                     <label>Service Price : </label>
-                    <input name="price" placeholder="Service price" type="text" value={curentservice?.serviceprice} onChange={(e) => inputChange(e)} />
+                    <input name="serviceprice" placeholder="Service price" type="text" value={curentservice?.serviceprice} onChange={(e) => inputChange(e)} />
                     <br />
                     <label>Service duration : </label>
-                    <input name="duration" placeholder="Service duration" type="text" value={curentservice?.serviceduration} onChange={(e) => inputChange(e)} />
+                    <input name="serviceduration" placeholder="Service duration" type="text" value={curentservice?.serviceduration} onChange={(e) => inputChange(e)} />
                     <br />
                     <label>Service Description : </label>
                     <textarea name="description" placeholder="Description" cols={10} rows={5} value={curentservice?.description} onChange={(e) => inputChange(e)}></textarea>

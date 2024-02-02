@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Allservices.module.css"
 import { filterproduct, filterBySearch, filterByCategory } from "../../../redux/slice/filterslice"
-import { getProducts, productdata } from "../../../redux/slice/productslice";
 import { useSelector, useDispatch } from "react-redux";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import data from '../../../../public/data.json'
-import { servicesdata } from "../../../redux/slice/serviceslice";
+import { getservices, servicesdata } from "../../../redux/slice/serviceslice";
 
 const Allservices = () => {
     const dispatch = useDispatch();
@@ -35,7 +34,7 @@ const Allservices = () => {
             await fetch(`https://lava-11a9b-default-rtdb.firebaseio.com/services/${id}.json`, {
                 method: "DELETE",
             })
-            dispatch(getProducts())
+            dispatch(getservices())
 
             toast.success("Product Deleted successful", {
                 position: "top-right",
@@ -49,9 +48,8 @@ const Allservices = () => {
     }
     return (
         <div className={styles.container}>
-            <h2>All Products</h2>
-            <h2>Categories</h2>
-            <p>{currentservices.length} Products found</p>
+            <h2>All Services</h2>
+            <p>{currentservices.length} Services found</p>
             <div className={styles.search}>
                 <input type="text" placeholder={`Search by name`} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
             </div>

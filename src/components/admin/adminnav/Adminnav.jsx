@@ -22,11 +22,11 @@ const Adminnav = () => {
                             Orders
                         </NavLink>
                     </li>
-                    {/* <li>
+                    <li>
                         <NavLink to="/admin/home-booking" className={activelink}>
                             Booking
                         </NavLink>
-                    </li> */}
+                    </li>
                     <li>
                         <NavLink to="/admin/all-products" className={activelink}>
                             All Products
@@ -37,7 +37,7 @@ const Adminnav = () => {
                             Add Product
                         </NavLink>
                     </li>
-                    {/* <li>
+                    <li>
                         <NavLink to="/admin/all-services" className={activelink}>
                             All Services
                         </NavLink>
@@ -46,7 +46,7 @@ const Adminnav = () => {
                         <NavLink to="/admin/add-service/Add" className={activelink}>
                             Add Service
                         </NavLink>
-                    </li> */}
+                    </li>
                 </ul>
             </div>
         </div>

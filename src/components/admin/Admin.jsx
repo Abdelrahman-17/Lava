@@ -19,10 +19,10 @@ const Admin = () => {
                 <Routes>
                     <Route path="all-products" element={<Allproducts />} />
                     <Route path="add-product/:id" element={<Addproduct />} />
-                    {/* <Route path="all-services" element={<Allservices />} /> */}
-                    {/* <Route path="add-service/:id" element={<Addservice />} /> */}
+                    <Route path="all-services" element={<Allservices />} />
+                    <Route path="add-service/:id" element={<Addservice />} />
                     <Route path="home-orders" element={<Adminhomeorders />} />
-                    {/* <Route path="home-booking" element={<Adminhomebooking />} /> */}
+                    <Route path="home-booking" element={<Adminhomebooking />} />
 
                 </Routes>
             </div>
